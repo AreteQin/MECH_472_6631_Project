@@ -9,6 +9,8 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {2}Image Processing}{4}{chapter.2}%
 \defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.0.1}Known Issues}{4}{subsection.2.0.1}%
+\defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {3}Robot Control}{5}{chapter.3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {4}Coding}{6}{chapter.4}%
