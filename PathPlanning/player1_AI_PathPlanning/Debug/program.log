@@ -1,0 +1,40 @@
+﻿  program.cpp
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(248,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(262,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(363,63): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(375,63): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(387,22): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(395,24): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(399,24): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(403,24): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(550,37): warning C4838: 从“double”转换到“int”需要收缩转换
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(550,37): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(550,46): warning C4838: 从“double”转换到“int”需要收缩转换
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(550,46): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(551,37): warning C4838: 从“double”转换到“int”需要收缩转换
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(551,37): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(551,46): warning C4838: 从“double”转换到“int”需要收缩转换
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(551,46): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(563,35): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(563,44): warning C4305: “参数”: 从“double”到“float”截断
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(564,28): warning C4838: 从“double”转换到“int”需要收缩转换
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(564,28): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(564,32): warning C4838: 从“double”转换到“int”需要收缩转换
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(564,32): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(626,40): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(626,23): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(627,41): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(627,23): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(637,27): warning C4838: 从“double”转换到“int”需要收缩转换
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(637,27): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(637,45): warning C4838: 从“double”转换到“int”需要收缩转换
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(637,45): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(557,8): warning C4101: “Sample_Theta_Global”: 未引用的局部变量
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(419,22): warning C4101: “pw_laser_o”: 未引用的局部变量
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(565,6): warning C4101: “B_Global_End”: 未引用的局部变量
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(560,6): warning C4101: “Robot_Global_Current_Position”: 未引用的局部变量
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(419,34): warning C4101: “laser_o”: 未引用的局部变量
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(419,6): warning C4101: “pw_l_o”: 未引用的局部变量
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(419,14): warning C4101: “pw_r_o”: 未引用的局部变量
+C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(405): warning C4715: “Get_Angle_Rotation”: 不是所有的控件路径都返回值
+  program.vcxproj -> C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\Debug\program.exe
