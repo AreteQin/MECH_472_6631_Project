@@ -20,6 +20,27 @@
 
 extern robot_system S1;
 
+struct Point
+{
+	double x, y;
+};
+
+Point GetFootOfPerpendicular(const Point& pt, const Point& begin, const Point& end)
+{
+	Point retVal;
+
+	double dx = begin.x - end.x;
+	double dy = begin.y - end.y;
+	double u = (pt.x - begin.x) * (begin.x - end.x) +
+		(pt.y - begin.y) * (begin.y - end.y);
+	u = u / ((dx * dx) + (dy * dy));
+
+	retVal.x = begin.x + u * dx;
+	retVal.y = begin.y + u * dy;
+
+	return retVal;
+}
+
 // define a class to represent objects
 // object_id_(1: self robot head, 2 : self robot rear
 //            3: enemy head, 4: enemy rear
@@ -44,7 +65,6 @@ private:
 	int object_id_, label_value_;
 	double position_x_, position_y_, theta_;
 };
-
 
 object::object() {
 	position_x_ = 0;
@@ -98,7 +118,7 @@ int object::identify_object(image input_RGB_image,
 		return 6;
 	}
 	// get the colour at four directions larger than robot's size
-	int robot_radius = 20;
+	int robot_radius = 25;
 	p_left = p + (i - robot_radius + input_RGB_image.width * j) * 3;
 	p_right = p + (i + robot_radius + input_RGB_image.width * j) * 3;
 	p_up = p + (i + input_RGB_image.width * (j + robot_radius)) * 3;
@@ -215,10 +235,13 @@ int get_positions_from_image(image rgb, int self_colour,
 	map.type = GREY_IMAGE;
 	scale(temp_image, map);
 	lowpass_filter(map, temp_image);
-	threshold(temp_image, map, 70);
+	threshold(temp_image, map, 180);
 	invert(map, temp_image);
 	erode(temp_image, map); // denoise
 	dialate(map, temp_image);
+	//copy(temp_image, rgb);
+	//view_rgb_image(rgb);
+	//pause();
 	// label objects
 	int nlabel;
 	label_image(temp_image, label_map, nlabel);
@@ -233,7 +256,6 @@ int get_positions_from_image(image rgb, int self_colour,
 		std::cout << "id: x,y,label: " << objects[i - 1].get_id() << ": " <<
 			ic[i] << " " << jc[i] << " " << objects[i - 1].get_label_value()<< std::endl;
 		//draw_point_rgb(rgb, ic[i], jc[i], 255, 0, 0);
-		//view_rgb_image(rgb);
 	}
 
 	free_image(temp_image);
@@ -257,6 +279,7 @@ bool check_space(std::vector<object> objects, int i, int j) {
 	return true;
 }
 
+// find out objects represent self and enemy robots from all objects
 bool get_robots(std::vector<object> objects, object& self, object& self_rear,
 				object& enemy, object& enemy_rear) {
 	for (int i = 0; i < objects.size(); i++) {
@@ -276,36 +299,46 @@ bool get_robots(std::vector<object> objects, object& self, object& self_rear,
 	return true;
 }
 
-//bool get_robot_position(std::vector<object> objects, 
-//	double &self_position_x, double &self_position_y, double &self_position_theta,
-//	double &enemy_position_x, double &enemy_position_y, double &enemy_position_theta) {
-//	object self, self_rear, enemy, enemy_rear;
-//	for (int i = 0; i < objects.size(); i++) {
-//		switch (objects[i].get_id()) {
-//		case 1: {
-//			self = objects[i];
-//			self_position_x = objects[i].get_position_x();
-//			self_position_y = objects[i].get_position_y();
-//		}
-//		case 2: {
-//			self_rear = objects[i];
-//		}
-//		case 3: {
-//			enemy = objects[i];
-//			enemy_position_x = objects[i].get_position_x();
-//			enemy_position_y = objects[i].get_position_y();
-//		}
-//		case 4: {
-//			enemy_rear = objects[i];
-//		}
-//		}
-//	}
-//	self.calculate_robot_theta(self_rear);
-//	self_position_theta = self.get_theta();
-//	enemy.calculate_robot_theta(enemy_rear);
-//	enemy_position_theta = enemy.get_theta();
-//	return true;
-//}
+// locate the hiding point according to the enemy position and 
+// the specific obstacle position
+bool calculate_hiding_point(double self_x, double self_y,
+	double enemy_x, double enemy_y,
+	double obstacle_x, double obstacle_y,
+	double &hiding_point_x, double &hiding_point_y) {
+
+	return true;
+}
+
+// calculate the distance between two points
+double distance(double x1, double y1, double x2, double y2) {
+	return sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+}
+
+bool calculate_expected_position(double self_x, double self_y, double self_theta,
+	double enemy_x, double enemy_y, double enemy_theta, std::vector<object> objects,
+	double &expected_x, double &expected_y, double &expected_theta) {
+	std::vector<double> points_x, points_y;
+	for (int i = 0; i < objects.size(); i++) {
+		if (objects[i].get_id() == 5) {
+			double point_x, point_y;
+			calculate_hiding_point(self_x, self_y, enemy_x, enemy_y,
+				objects[i].get_position_x(), objects[i].get_position_y(),
+				point_x, point_y);
+			points_x.push_back(point_x);
+			points_y.push_back(point_y);
+		}
+	}
+	double min_distance=600.0;
+	for (int i = 0; i < points_x.size(); i++) {
+		double distance_ = distance(points_x[i], points_y[i], self_x, self_y);
+		if (min_distance < distance_) {
+			min_distance = distance_;
+			expected_x = points_x[i];
+			expected_y = points_y[i];
+		}
+	}
+	return true;
+}
 
 int main()
 {
@@ -377,7 +410,7 @@ int main()
 	// the library, but it will be implemented soon.
 
 	activate_simulation(width1, height1, x_obs, y_obs, size_obs, N_obs,
-		"robot_A.bmp", "robot_B.bmp", "background.bmp", "obstacle.bmp", D, Lx, Ly,
+		"robot_A.bmp", "robot_B.bmp", "background.bmp", "obstacle_blue.bmp", D, Lx, Ly,
 		Ax, Ay, alpha_max, n_robot);
 
 	// open an output file if needed for testing or plotting
@@ -395,7 +428,7 @@ int main()
 	// set robot initial position (pixels) and angle (rad)
 	x0 = 150;
 	y0 = 350;
-	theta0 = 1;
+	theta0 = 3;
 	set_robot_position(x0, y0, theta0);
 
 	// set initial inputs / on-line adjustable parameters /////////
@@ -477,14 +510,18 @@ int main()
 		label_map.width = rgb.width;
 		label_map.height = rgb.height;
 		allocate_image(label_map);
+
 		int nlabel = get_positions_from_image(rgb, self_colour, objects, 
 											label_map);
+
 		object self,self_rear,enemy,enemy_rear;
 		get_robots(objects,self,self_rear,enemy,enemy_rear);
 		self.calculate_robot_theta(self_rear);
 		enemy.calculate_robot_theta(enemy_rear);
+
 		double self_position_x, self_position_y, self_position_theta,
 			enemy_position_x, enemy_position_y, enemy_position_theta;
+
 		self_position_x = self.get_position_x();
 		self_position_y = self.get_position_y();
 		self_position_theta = self.get_theta();
@@ -500,7 +537,7 @@ int main()
 			<< enemy_position_y << ", "
 			<< enemy_position_theta 
 			<< ", " << std::endl;
-		//copy(map, rgb);
+
 		draw_point_rgb(rgb, self_position_x, self_position_y, 0, 0, 255);
 		draw_point_rgb(rgb, enemy_position_x, enemy_position_y, 0, 255, 0);
 
@@ -509,8 +546,18 @@ int main()
 		std::cout << "is 300, 200 free? "
 			<< check_space(objects, 300, 200) << std::endl;
 
-		//free_image(map);
-		//   Image processing done ---------------------------------------------
+		// Image processing done ---------------------------------------------
+
+		// Hiding Strategy ---------------------------------------------------
+		// input: self state, enemy state, all obstacles
+		// output: expected state
+		double expected_x, expected_y, expected_theta;
+		calculate_expected_position(self_position_x, self_position_y, self_position_theta,
+			enemy_position_x, enemy_position_y, enemy_position_theta, objects,
+			expected_x, expected_y, expected_theta);
+		draw_point_rgb(rgb, expected_x, expected_y, 255, 0, 0);
+		// Hiding Strategy done ---------------------------------------------------
+
 
 		// NOTE: only one program can call view_image()
 		view_rgb_image(rgb);

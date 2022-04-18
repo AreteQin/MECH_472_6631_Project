@@ -11,6 +11,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.0.1}Known Issues}{4}{subsection.2.0.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Robot Control}{5}{chapter.3}%
+\contentsline {chapter}{\numberline {3}Robot Control}{6}{chapter.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Coding}{6}{chapter.4}%
+\contentsline {chapter}{\numberline {4}Hiding and Attacking Strategies}{7}{chapter.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Hiding}{7}{section.4.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Attacking}{7}{section.4.2}%
