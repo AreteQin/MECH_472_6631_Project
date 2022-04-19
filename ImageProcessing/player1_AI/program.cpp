@@ -20,27 +20,6 @@
 
 extern robot_system S1;
 
-struct Point
-{
-	double x, y;
-};
-
-Point GetFootOfPerpendicular(const Point& pt, const Point& begin, const Point& end)
-{
-	Point retVal;
-
-	double dx = begin.x - end.x;
-	double dy = begin.y - end.y;
-	double u = (pt.x - begin.x) * (begin.x - end.x) +
-		(pt.y - begin.y) * (begin.y - end.y);
-	u = u / ((dx * dx) + (dy * dy));
-
-	retVal.x = begin.x + u * dx;
-	retVal.y = begin.y + u * dy;
-
-	return retVal;
-}
-
 // define a class to represent objects
 // object_id_(1: self robot head, 2 : self robot rear
 //            3: enemy head, 4: enemy rear
@@ -221,7 +200,7 @@ int object::get_label_value() {
 // get positions of two robots and map which includes all obstacles,
 // return the number of found objects
 int get_positions_from_image(image rgb, int self_colour,
-	std::vector<object> & objects, image & label_map) {
+	std::vector<object> &objects, image &label_map) {
 	image temp_image, map;
 	temp_image.type = GREY_IMAGE;
 	temp_image.width = rgb.width;
@@ -305,7 +284,12 @@ bool calculate_hiding_point(double self_x, double self_y,
 	double enemy_x, double enemy_y,
 	double obstacle_x, double obstacle_y,
 	double &hiding_point_x, double &hiding_point_y) {
-
+	double dx = obstacle_x - enemy_x;
+	double dy = obstacle_y - enemy_y;
+	double k = ((self_x - obstacle_x) * dx + (self_y - obstacle_y) * dy)
+		/ ((dx * dx) + (dy * dy));
+	hiding_point_x = obstacle_x + k * dx;
+	hiding_point_y = obstacle_y + k * dy;
 	return true;
 }
 
@@ -328,15 +312,23 @@ bool calculate_expected_position(double self_x, double self_y, double self_theta
 			points_y.push_back(point_y);
 		}
 	}
-	double min_distance=600.0;
+	double min_distance=2000.0;
 	for (int i = 0; i < points_x.size(); i++) {
 		double distance_ = distance(points_x[i], points_y[i], self_x, self_y);
-		if (min_distance < distance_) {
+		std::cout << "distance: " << distance_ << std::endl;
+		if (distance_ < min_distance) {
 			min_distance = distance_;
 			expected_x = points_x[i];
 			expected_y = points_y[i];
+			std::cout << "hiding_point: " << points_x[i] << ", " << points_y[i] << std::endl;
+			std::cout << "distance: " << distance_ << std::endl;
 		}
 	}
+	if (enemy_theta > 0) {
+		expected_theta = enemy_theta - 3.14;
+		return true;
+	}
+	expected_theta = enemy_theta + 3.14;
 	return true;
 }
 
@@ -538,13 +530,13 @@ int main()
 			<< enemy_position_theta 
 			<< ", " << std::endl;
 
-		draw_point_rgb(rgb, self_position_x, self_position_y, 0, 0, 255);
-		draw_point_rgb(rgb, enemy_position_x, enemy_position_y, 0, 255, 0);
+		//draw_point_rgb(rgb, self_position_x, self_position_y, 0, 0, 255);
+		//draw_point_rgb(rgb, enemy_position_x, enemy_position_y, 0, 255, 0);
 
-		std::cout << "is 100, 100 free? "
-			<< check_space(objects, 320, 400) << std::endl;
-		std::cout << "is 300, 200 free? "
-			<< check_space(objects, 300, 200) << std::endl;
+		//std::cout << "is 100, 100 free? "
+			//<< check_space(objects, 320, 400) << std::endl;
+		//std::cout << "is 300, 200 free? "
+			//<< check_space(objects, 300, 200) << std::endl;
 
 		// Image processing done ---------------------------------------------
 
@@ -555,7 +547,7 @@ int main()
 		calculate_expected_position(self_position_x, self_position_y, self_position_theta,
 			enemy_position_x, enemy_position_y, enemy_position_theta, objects,
 			expected_x, expected_y, expected_theta);
-		draw_point_rgb(rgb, expected_x, expected_y, 255, 0, 0);
+		//draw_point_rgb(rgb, expected_x, expected_y, 255, 0, 0);
 		// Hiding Strategy done ---------------------------------------------------
 
 
