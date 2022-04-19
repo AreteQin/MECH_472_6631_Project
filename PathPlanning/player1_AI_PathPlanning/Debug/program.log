@@ -1,40 +1,55 @@
-﻿  program.cpp
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(248,20): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(262,20): warning C4018: “<”: 有符号/无符号不匹配
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(363,63): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(375,63): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(387,22): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(395,24): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(399,24): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(403,24): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(550,37): warning C4838: 从“double”转换到“int”需要收缩转换
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(550,37): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(550,46): warning C4838: 从“double”转换到“int”需要收缩转换
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(550,46): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(551,37): warning C4838: 从“double”转换到“int”需要收缩转换
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(551,37): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(551,46): warning C4838: 从“double”转换到“int”需要收缩转换
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(551,46): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(563,35): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(563,44): warning C4305: “参数”: 从“double”到“float”截断
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(564,28): warning C4838: 从“double”转换到“int”需要收缩转换
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(564,28): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(564,32): warning C4838: 从“double”转换到“int”需要收缩转换
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(564,32): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(626,40): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(626,23): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(627,41): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(627,23): warning C4244: “参数”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(637,27): warning C4838: 从“double”转换到“int”需要收缩转换
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(637,27): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(637,45): warning C4838: 从“double”转换到“int”需要收缩转换
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(637,45): warning C4244: “初始化”: 从“double”转换到“int”，可能丢失数据
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(557,8): warning C4101: “Sample_Theta_Global”: 未引用的局部变量
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(419,22): warning C4101: “pw_laser_o”: 未引用的局部变量
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(565,6): warning C4101: “B_Global_End”: 未引用的局部变量
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(560,6): warning C4101: “Robot_Global_Current_Position”: 未引用的局部变量
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(419,34): warning C4101: “laser_o”: 未引用的局部变量
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(419,6): warning C4101: “pw_l_o”: 未引用的局部变量
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(419,14): warning C4101: “pw_r_o”: 未引用的局部变量
-C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\program.cpp(405): warning C4715: “Get_Angle_Rotation”: 不是所有的控件路径都返回值
-  program.vcxproj -> C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\PathPlanning\player1_AI\Debug\program.exe
+﻿  object.cpp
+  program.cpp
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(248,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(262,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(363,63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(375,63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(387,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(395,24): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(399,24): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(403,24): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(550,37): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(550,37): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(550,46): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(550,46): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(551,37): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(551,37): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(551,46): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(551,46): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(563,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(563,44): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(564,28): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(564,28): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(564,32): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(564,32): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(626,40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(626,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(627,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(627,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(637,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(637,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(637,45): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(637,45): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(557,8): warning C4101: 'Sample_Theta_Global': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(419,22): warning C4101: 'pw_laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(565,6): warning C4101: 'B_Global_End': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(560,6): warning C4101: 'Robot_Global_Current_Position': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(419,34): warning C4101: 'laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(419,6): warning C4101: 'pw_l_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(419,14): warning C4101: 'pw_r_o': unreferenced local variable
+  robot.cpp
+  shared_memory.cpp
+  timer.cpp
+  vision.cpp
+  vision_simulation.cpp
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\vision_simulation.cpp(270,18): warning C4101: 't_laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\vision_simulation.cpp(270,9): warning C4101: 't_laser': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\vision_simulation.cpp(698,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\vision_simulation.cpp(699,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\vision_simulation.cpp(700,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\vision_simulation.cpp(514,12): warning C4101: 'k': unreferenced local variable
+  Generating Code...
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\program.cpp(405): warning C4715: 'Get_Angle_Rotation': not all control paths return a value
+image_transfer.lib(image_transfer.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(image_transfer.obj)' or at 'C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\Debug\program.pdb'; linking object as if no debug info
+image_transfer.lib(Video_IO.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(Video_IO.obj)' or at 'C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\Debug\program.pdb'; linking object as if no debug info
+  program.vcxproj -> C:\Users\mario\Desktop\University\MECH 472\MECH_Project\PathPlanning\player1_AI_PathPlanning\Debug\program.exe
