@@ -239,7 +239,7 @@ int get_positions_from_image(image rgb, int self_colour,
 		objects[i-1].identify_object(rgb, label_map, self_colour);
 		std::cout << "id: x,y,label: " << objects[i - 1].get_id() << ": " <<
 			ic[i] << " " << jc[i] << " " << objects[i - 1].get_label_value()<< std::endl;
-		draw_point_rgb(rgb, ic[i], jc[i], 255, 0, 0);
+		//draw_point_rgb(rgb, ic[i], jc[i], 255, 0, 0);
 	}
 
 	free_image(temp_image);
@@ -552,7 +552,7 @@ int main()
 		calculate_expected_position(self_position_x, self_position_y, self_position_theta,
 			enemy_position_x, enemy_position_y, enemy_position_theta, objects,
 			expected_x, expected_y, expected_theta);
-		//draw_point_rgb(rgb, expected_x, expected_y, 255, 0, 0);
+		draw_point_rgb(rgb, expected_x, expected_y, 255, 0, 0);
 		// Hiding Strategy done ---------------------------------------------------
 
 
