@@ -63,13 +63,18 @@ int object::identify_object(image input_RGB_image,
 	int j = (int)position_y_;
 	//std::cout << "label: " << p_label[j * label_map.width + i] << std::endl;
 	// calculate the position of pointer of object center
-	int wheel_length = 6;
+	int wheel_length = 4;
 	ibyte* p_center = p + (i + input_RGB_image.width * j) * 3;
 	ibyte* p_left = p + (i - wheel_length + input_RGB_image.width * j) * 3;
 	ibyte* p_right = p + (i + wheel_length + input_RGB_image.width * j) * 3;
 	ibyte* p_up = p + (i + input_RGB_image.width * (j + wheel_length)) * 3;
 	ibyte* p_down = p + (i + input_RGB_image.width * (j - wheel_length)) * 3;
 	// get the colour of object center
+	if (i> input_RGB_image.width-16 || i < 16 ||
+		j> input_RGB_image.height - 16 || j<16) {
+		std::cout << "out of sight!----------------------" << std::endl;
+		return 0;
+	}
 	ibyte B = *p_center;
 	ibyte G = *(p_center + 1);
 	ibyte R = *(p_center + 2);
@@ -97,7 +102,7 @@ int object::identify_object(image input_RGB_image,
 		return 6;
 	}
 	// get the colour at four directions larger than robot's size
-	int robot_radius = 25;
+	int robot_radius = 15;
 	p_left = p + (i - robot_radius + input_RGB_image.width * j) * 3;
 	p_right = p + (i + robot_radius + input_RGB_image.width * j) * 3;
 	p_up = p + (i + input_RGB_image.width * (j + robot_radius)) * 3;
@@ -153,7 +158,7 @@ int object::identify_object(image input_RGB_image,
 	}
 	//std::cout << "found an obstacle" << std::endl;
 	object_id_ = 5;
-	label_value_ = p_label[j * label_map.width + i];
+	//label_value_ = p_label[j * label_map.width + i];
 	return 5;
 }
 
@@ -234,7 +239,7 @@ int get_positions_from_image(image rgb, int self_colour,
 		objects[i-1].identify_object(rgb, label_map, self_colour);
 		std::cout << "id: x,y,label: " << objects[i - 1].get_id() << ": " <<
 			ic[i] << " " << jc[i] << " " << objects[i - 1].get_label_value()<< std::endl;
-		//draw_point_rgb(rgb, ic[i], jc[i], 255, 0, 0);
+		draw_point_rgb(rgb, ic[i], jc[i], 255, 0, 0);
 	}
 
 	free_image(temp_image);
