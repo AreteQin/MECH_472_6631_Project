@@ -54,13 +54,17 @@ void poscontroller(double xref, double yref, double x, double y, double theta, d
 
 void purepursuit(double xref, double yref, double x, double y, double theta, double& v_cmd, double& w_cmd) {
 
-	double Kh = 0.5, kd = 0, ki = 0.;
-	double e, d = 4;
+	double Kh = 0.5, kd = 0, ki = 0.005, kp = 0.5;
+	double e;
 
 	e = sqrt(pow(x - xref, 2) + pow(y- yref, 2));
 
-	v_cmd = pid(2, kd, ki, e);
+	v_cmd = pid(kp, kd, ki, e);
 
 	w_cmd = Kh * (atan2(yref - y, xref - x) - theta);
 
 }
+
+void motor_anglectrl(double theta_ref, double theta){}
+
+void motor_velctrl(double omega_ref, double omega){}

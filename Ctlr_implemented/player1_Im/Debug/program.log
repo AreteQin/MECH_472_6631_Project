@@ -1,0 +1,29 @@
+﻿  program.cpp
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(256,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(271,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(312,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(323,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(397,63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(409,63): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(420,22): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(428,24): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(432,24): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(436,24): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(457,8): warning C4101: 'Sample_Theta_Global': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(685,29): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(685,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(685,46): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(685,46): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(686,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(686,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(686,45): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(686,45): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(688,79): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(710,15): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(711,15): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(508,22): warning C4101: 'pw_laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(508,34): warning C4101: 'laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(508,6): warning C4101: 'pw_l_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(508,14): warning C4101: 'pw_r_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\program.cpp(438): warning C4715: 'Get_Angle_Rotation': not all control paths return a value
+  program.vcxproj -> C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\Debug\program.exe

@@ -317,6 +317,8 @@ bool get_robots(std::vector<object> objects, object& self, object& self_rear,
 // 1.SamplingArray: Create Sample point in Body coordinate system;
 // 2.RotationArray: Transform Sample point from Body coordinate system to Globle coordinate system
 // 3.Get_Angle_Rotation: Get part angle for transform of rotation Array 
+// 4.PathTrack : When you know the start position(the current position of car) and end/Goal position(the position where you want car to go),You can use this function
+
 
 //------------------1.SamplingArray: Create Sample point from Body coordinate system-------Start
 void SamplingArray(float Sampling_points[(270 / 5 + 1) * 3], float Mini_Radian, float S_R)
@@ -377,7 +379,6 @@ int TF_Y(float Reason[2], int Translation_y, float Radian)
 	Result_y = sin(Radian) * Reason[0] + cos(Radian) * Reason[1] + Translation_y;
 	return Result_y;
 }
-
 //----------------- 3.Get the angle from Start_A(Current)and Goal_B in the map coordinate system----------
 float Get_Angle_Rotation(int Start[2], int Goal[2])
 /////////////////////////////////////////////////////////////////////////////////////
@@ -406,6 +407,62 @@ float Get_Angle_Rotation(int Start[2], int Goal[2])
 	};
 }
 ////1.part-------The Funciton Defination for Path planning --------End
+void PathTrack(int OneViewPoint[2], int A_Global_Start[2], int B_Global_End[2], float Mini_Radian, float S_R, std::vector<object>& objects)
+
+//Input 1 : A_Global_Start[2]:the start/current position of car; 
+//Input 2 : B_Global_End[2]:  end/Goal position(the position where you want car to go),
+//Input 3 : Mini_Radian: Minimum radian interval for search
+//Input 4 : S_R        : Sample Search Step size  
+//Input 5 : std::vector<object>& objects  : A class form teamclass qiaomneng Qin
+//Output  : OneViewPoint[2]:  a step viewpoint of path planning from Start point to End point(maybe you think it is a input actually it is ready for dynamic memory block please see gordan`s course in week 4)
+//
+//
+{
+	float* S = new float[(270 / 5 + 1) * 3];       // initialize a dynamic Array
+	SamplingArray(S, Mini_Radian, S_R);         // Sampling points be stored in S array in the body coodination
+	// Intermediate variable
+	float Sample_Point_Body[2];
+	float Sample_Theta_Body;
+	int Sample_Point_Global[2];
+	float Sample_Theta_Global;
+	float Radian_Get;
+	for (int j = 0; j < 270 / 5 + 1; j++)
+	{
+		//initialize the point to be transform
+		Sample_Point_Body[0] = S[j];
+		Sample_Point_Body[1] = S[j + 1];
+		Sample_Theta_Body = S[j + 2];
+		// Initialize the Rotation angle value from A TO B point in the global coordinate system
+		Radian_Get = Get_Angle_Rotation(A_Global_Start, B_Global_End) + Sample_Theta_Body;
+		// Transform body coordinate system to global coordinte system
+		Sample_Point_Global[0] = TF_X(Sample_Point_Body, A_Global_Start[0], Radian_Get);
+		Sample_Point_Global[1] = TF_Y(Sample_Point_Body, A_Global_Start[1], Radian_Get);
+		if (check_space(objects, Sample_Point_Global[0], Sample_Point_Global[1]) == true)
+		{
+			/* be used to rebug , do not move it
+					cout << "get veiw point/ Global positon:";
+			cout << Sample_Point_Global[0] << ";" << Sample_Point_Global[1];
+			cout << "\n";
+			cout << " And Body Position And Theta :";
+			cout << Sample_Point_Body[0] << ";" << Sample_Point_Body[1] << ";" << 180 * Sample_Theta_Body / 3.1415926;
+			cout << "\n";
+			cout << "Position A , Angle of A TO B Theta, Angle of Rotation:";
+			cout << A_Global_Start[0] << ";"<< A_Global_Start[1];
+			cout << ";" << 180 * Get_Angle_Rotation(A_Global_Start, B_Global_End) / 3.1415926 << ";" << 180 * Radian_Get / 3.1415926;
+			cout << "\n";
+			*/
+
+			OneViewPoint[0] = Sample_Point_Global[0];                           // update x label of start point 
+			OneViewPoint[1] = Sample_Point_Global[1];                           // update y label of start point
+			//Check_Local_Min[kkk] = { A_Global_Start[0], A_Global_Start[1] };
+			//kkk++;
+
+			break;
+		}
+		j = j + 2;
+	}
+
+}
 
 int main()
 {
@@ -603,54 +660,18 @@ int main()
 		draw_point_rgb(rgb, self_position_x, self_position_y, 0, 0, 255);
 		draw_point_rgb(rgb, enemy_position_x, enemy_position_y, 0, 255, 0);
 
-		/*std::cout << "is 100, 100 free? "
-			<< check_space(objects, 320, 400) << std::endl;
-		std::cout << "is 300, 200 free? "
-			<< check_space(objects, 300, 200) << std::endl;*/
 
-		////part 3.------------------Track object for Path planning-----------------Start
-/// Author  : Xiaobo Wu
-/// Data    : 2022.04.10 
-		int B_Global_End[2] = { enemy_position_x, enemy_position_y };// Set goal/end point
-		for (int j = 0; j < 270 / 5 + 1; j++)
-		{
-			//initialize the point to be transform
-			Sample_Point_Body[0] = S[j];
-			Sample_Point_Body[1] = S[j + 1];
-			Sample_Theta_Body = S[j + 2];
-			// Initialize the Rotation angle value from A TO B point in the global coordinate system
-			Radian_Get = Get_Angle_Rotation(A_Global_Start, B_Global_End) + Sample_Theta_Body;
-			// Transform body coordinate system to global coordinte system
-			Sample_Point_Global[0] = TF_X(Sample_Point_Body, A_Global_Start[0], Radian_Get);
-			Sample_Point_Global[1] = TF_Y(Sample_Point_Body, A_Global_Start[1], Radian_Get);
-			if (check_space(objects, Sample_Point_Global[0], Sample_Point_Global[1]) == true)
-			{
-				/* be used to rebug , do not move it
-						cout << "get veiw point/ Global positon:";
-				cout << Sample_Point_Global[0] << ";" << Sample_Point_Global[1];
-				cout << "\n";
-				cout << " And Body Position And Theta :";
-				cout << Sample_Point_Body[0] << ";" << Sample_Point_Body[1] << ";" << 180 * Sample_Theta_Body / 3.1415926;
-				cout << "\n";
-				cout << "Position A , Angle of A TO B Theta, Angle of Rotation:";
-				cout << A_Global_Start[0] << ";"<< A_Global_Start[1];
-				cout << ";" << 180 * Get_Angle_Rotation(A_Global_Start, B_Global_End) / 3.1415926 << ";" << 180 * Radian_Get / 3.1415926;
-				cout << "\n";
-				*/
-
-				A_Global_Start[0] = Sample_Point_Global[0];                           // update x label of start point 
-				A_Global_Start[1] = Sample_Point_Global[1];                           // update y label of start point
-				//Check_Local_Min[kkk] = { A_Global_Start[0], A_Global_Start[1] };
-				//kkk++;
-				///////////////////////////////////////////////////////////////////////////////////////
-
-				draw_point_rgb(rgb, A_Global_Start[0], A_Global_Start[1], 225, 0, 0); // draw the point to track/draw the goal point
-				break;
-			}
-			j = j + 2;
-		}
-
-		//free_image(map);
+			/// Part 2.---------------------Track object for Path planning----------------------Start
+			/// Author  : Xiaobo Wu 
+			/// Data    : 2022.04.10 
+		int A_Global_Start[2] = { self_position_x, self_position_y };                      //initiallze a dynamic input parameter
+		int B_Global_End[2] = { enemy_position_x, enemy_position_y };
+		int* OneView = new int[2];                                                         // initialize a dynamic Array
+		PathTrack(OneView, A_Global_Start, B_Global_End, 3.1415926 / 19, 20, objects);     // realize the one-step viewpoint path track
+		draw_point_rgb(rgb, OneView[0], OneView[1], 225, 0, 0);                            // draw the view point to track/draw the goal point
+		////part 2.------------------Track object for Path planning-----------------END
+		
+		
 		//   Image processing done ---------------------------------------------
 
 		poscontroller(A_Global_Start[0], A_Global_Start[1], self_position_x, self_position_y, self_position_theta, v_cmd, w_cmd);
@@ -671,6 +692,7 @@ int main()
 
 		// don't need to simulate too fast
 		Sleep(50); // 100 fps max
+		delete OneView;
 	}
 
 	// free the image memory before the program completes

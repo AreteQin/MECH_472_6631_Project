@@ -1,12 +1,27 @@
-﻿  program.cpp
-C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(254,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(269,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(310,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(321,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(555,35): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(555,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(351,22): warning C4101: 'pw_laser_o': unreferenced local variable
-C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(351,34): warning C4101: 'laser_o': unreferenced local variable
-C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(351,6): warning C4101: 'pw_l_o': unreferenced local variable
-C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(351,14): warning C4101: 'pw_r_o': unreferenced local variable
-  program.vcxproj -> C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\Debug\program.exe
+﻿  object.cpp
+  program.cpp
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(254,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(269,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(310,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(321,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(555,35): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(555,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(351,22): warning C4101: 'pw_laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(351,34): warning C4101: 'laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(351,6): warning C4101: 'pw_l_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(351,14): warning C4101: 'pw_r_o': unreferenced local variable
+  robot.cpp
+  shared_memory.cpp
+  timer.cpp
+  vision.cpp
+  vision_simulation.cpp
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\vision_simulation.cpp(270,18): warning C4101: 't_laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\vision_simulation.cpp(270,9): warning C4101: 't_laser': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\vision_simulation.cpp(698,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\vision_simulation.cpp(699,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\vision_simulation.cpp(700,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\vision_simulation.cpp(514,12): warning C4101: 'k': unreferenced local variable
+  Generating Code...
+image_transfer.lib(image_transfer.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(image_transfer.obj)' or at 'C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\Debug\program.pdb'; linking object as if no debug info
+image_transfer.lib(Video_IO.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(Video_IO.obj)' or at 'C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\Debug\program.pdb'; linking object as if no debug info
+  program.vcxproj -> C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\Debug\program.exe
