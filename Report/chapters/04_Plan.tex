@@ -1,6 +1,9 @@
 \chapter{Hiding and Attacking Strategies}
 \label{cha:STRATEGIES}
 
+As we all know , there are two tasks everyone robot / program should be able to complete on the vision simulator. First, Your robot chases the opponent robot and tries to hit it with the laser while the other robot tries to avoid getting hit. Second, The opponent robot chases your robot and tries to hit it with the laser while your robot tries to avoid getting hit. We find that obstacles are considered to block the laser so we give the following hiding and attacking strategies. 
+
+
 \section{Hiding}
 Always  goushi hide self robot behind a obstacle and keep two robots and obstacle at a straight line, as shown in figure \ref{hiding_strategy}:
 
@@ -10,7 +13,69 @@ Always  goushi hide self robot behind a obstacle and keep two robots and obstacl
     \caption[hiding strategy]{an example of positions that satisfies the hiding strategy.}\label{hiding_strategy}
 \end{figure}
 
- 
+\section{The tactics of hiding}
+In order to implement the strategies above, detail tactics will be introduced. As we can see in the figure \ref{hiding_static}. Here we assume that there are three obstacles (1~3 obstacles in the environment randomly placed in the central part of the environment) in workspace. The red points are the centre of obstacles and robot,  $O$ point is the centre of opponent robot and $P$ point is the centre of my robot. In hiding model,  my robot need to move to hiding point behind the obstacles quickly. But how to pick the specific hiding point is a difficult problem to be solved. There is a feasible solution to be introduced.
+Three straight lines (auxiliary lines) pass through the center of the opponent robot and the center of the obstacle, they are line $OD$, line $OE$ and line $OF$. The vertical feet are point $A$, point $B$ and point $C$, when make vertical lines from point $P$ to these three lines— line $OD$, line $OE$, line $OF$. My robot will regard C point as the best hiding point. Compared with other hiding points ($A$ position and $B$ position) $C$ is the nearest point where to the current my robot position. According to the position of obstacles and robot (my robot and opponent robot), the algorithm of hiding model will update the dynamic hiding point to avoid the hit and attack from opponent robot.
+
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/PathPlaningHidingModel.png}
+    \caption[an tactics for  hiding strategy]{an tactics for  hiding strategy.}\label{hiding_tactic}
+\end{figure}
+
+\section{The implement of hiding}
+In order to find the nearest point that satisfies the condition, an obstacle between the self and enemy, the foot of perpendicular from current position to the straight-line connecting enemy and obstacles, as shown in figure \ref{hiding_implement1}
+
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/implementofhiding1.png}
+    \caption[he foot of perpendicular from current position to the straight-line connecting enemy and obstacles]{he foot of perpendicular from current position to the straight-line connecting enemy and obstacles.}\label{hiding_implement1}
+\end{figure}
+
+The calculation of the foot of the perpendicular is as follows:
+We assume that $A=(x_{a},y_{a})$ ,  $B=(x_{b},y_{b})$ are position of enemy and obstacle as shown in figure \ref{hiding_implement2}. $C=(x_{c},y_{c})$ is the position of self-robot, $O=(x_{o},y_{o})$ is the foot of perpendicular from point $C$ to line $AB$.
+
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/implementofhiding2.png}
+    \caption[The foot of perpendicular]{The foot of perpendicular.}\label{hiding_implement2}
+\end{figure}
+Since $\overrightarrow{AB} \perp  \overrightarrow{CO}$, we have:
+
+\begin{equation}
+(x_{b}-x_{a})(x_{o}-x_{c})+(y_{b}-y_{a})(y_{o}-y_{c})=0
+\end{equation}
+
+Since $\overrightarrow{AB}$ and $\overrightarrow{AO}$ has same direction, we have:
+\begin{equation}
+\left\{\begin{matrix}
+x_{o}=k({x_{b}}-{x_{a}})+{x_{a}}\\
+y_{o}=k({y_{b}}-{y_{a}})+{y_{a}}
+\end{matrix}\right.
+\end{equation}
+
+Substitute $x_o$ and $y_o$ in the second equation to find out $k$. Then substitute $k$ in the third equation to find out $x_o$ and $y_o$.
+\begin{equation}
+    k=-\frac{(x_{a}-x_{c})(x_{b}-x_{a})+(y_{a}-y_{c})(y_{b}-y_{a})}{(x_{b}-x_{a})^{2}+(x_{b}-x_{a})^{2}}
+\end{equation}
+
+Once we have arrived at the expected position, direction of the self-robot is also important. As shown in figure \ref{hiding_implement3} a, if the direction of self-robot is not opposed to the enemy-robot, to run away from the enemy, the self-robot should rotate first, and then move around the obstacle. However, if we keep the direction of self-robot as opposed to the enemy, as shown in figure \ref{hiding_implement3} b, we do not need to rotate robot first, we can move robot around the obstacle directly instead.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width =0.48\textwidth]{images/implementofhiding3-1.png}
+\includegraphics[width =0.48\textwidth]{images/implementofhiding3-2.png}
+\caption{The importance of self-robot direction}\label{hiding_implement3}
+\end{figure}
+
+Therefore, to keep the direction as opposed to the enemy, the expected position also requests a specific theta.  For the convenience of calculation, we should stipulate that the theta of robot is between pi and -pi as shown in figure \ref{hiding_implement4}.
+
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/implementofhiding4.png}
+    \caption[The representation of theta]{The representation of theta.}\label{hiding_implement4}
+\end{figure}
+
+
 
 \section{Attacking}
 Since there is only one chance to fire the laser, it should fire until there is no obstacle between two robots. In order to do so, attacking robot should chase another robot. 
