@@ -247,7 +247,6 @@ int main()
 	// free the image memory before the program completes
 	free_image(rgb);
 
-
 	deactivate_vision();
 	
 	deactivate_simulation();	
