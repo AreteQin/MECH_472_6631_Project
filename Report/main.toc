@@ -5,16 +5,30 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.1}Modelling of the Robot}{1}{section.1.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.2}Teamwork}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.2}System Structure}{2}{section.1.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Image Processing}{4}{chapter.2}%
+\contentsline {section}{\numberline {1.3}Teamwork}{3}{section.1.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.0.1}Known Issues}{4}{subsection.2.0.1}%
+\contentsline {chapter}{\numberline {2}Image Processing}{5}{chapter.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}Robot Control}{6}{chapter.3}%
+\contentsline {section}{\numberline {2.1}Locating Objects}{5}{section.2.1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {4}Hiding and Attacking Strategies}{7}{chapter.4}%
+\contentsline {section}{\numberline {2.2}Identifying Objects}{6}{section.2.2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}Hiding}{7}{section.4.1}%
+\contentsline {chapter}{\numberline {3}Path planning}{8}{chapter.3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Attacking}{7}{section.4.2}%
+\contentsline {section}{\numberline {3.1}The principle and process of ASIA}{9}{section.3.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}The implement of ASIA}{11}{section.3.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Robot Control}{13}{chapter.4}%
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {5}Hiding and Attacking Strategies}{14}{chapter.5}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.1}Hiding}{14}{section.5.1}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.2}The tactics of hiding}{14}{section.5.2}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.3}The implementation of hiding}{16}{section.5.3}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {5.4}Attacking}{18}{section.5.4}%

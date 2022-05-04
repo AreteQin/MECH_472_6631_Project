@@ -1,3 +1,19 @@
+<<<<<<< HEAD
+﻿  program.cpp
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(255,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(270,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(311,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(322,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(556,35): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(556,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(352,22): warning C4101: 'pw_laser_o': unreferenced local variable
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(352,34): warning C4101: 'laser_o': unreferenced local variable
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(352,6): warning C4101: 'pw_l_o': unreferenced local variable
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\program.cpp(352,14): warning C4101: 'pw_r_o': unreferenced local variable
+image_transfer.lib(image_transfer.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(image_transfer.obj)' or at 'C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\Debug\program.pdb'; linking object as if no debug info
+image_transfer.lib(Video_IO.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(Video_IO.obj)' or at 'C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\Debug\program.pdb'; linking object as if no debug info
+  program.vcxproj -> C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player1_AI\Debug\program.exe
+=======
 ﻿  object.cpp
   program.cpp
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\program.cpp(254,20): warning C4018: '<': signed/unsigned mismatch
@@ -25,3 +41,4 @@ C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_
 image_transfer.lib(image_transfer.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(image_transfer.obj)' or at 'C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\Debug\program.pdb'; linking object as if no debug info
 image_transfer.lib(Video_IO.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(Video_IO.obj)' or at 'C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\Debug\program.pdb'; linking object as if no debug info
   program.vcxproj -> C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player1_AI\Debug\program.exe
+>>>>>>> d86e951bf3d3bdf8442cb26adc7571470968e0dd

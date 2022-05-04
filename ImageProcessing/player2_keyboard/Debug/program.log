@@ -1,1 +1,18 @@
+<<<<<<< HEAD
+﻿  program.cpp
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(200,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(201,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(205,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(206,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(210,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(211,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(215,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(216,16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(34,22): warning C4101: 'pw_laser_o': unreferenced local variable
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(34,34): warning C4101: 'laser_o': unreferenced local variable
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(34,6): warning C4101: 'pw_l_o': unreferenced local variable
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\program.cpp(34,14): warning C4101: 'pw_r_o': unreferenced local variable
+  program.vcxproj -> C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\ImageProcessing\player2_keyboard\Debug\program.exe
+=======
 ﻿  program.vcxproj -> C:\Users\mario\Desktop\University\MECH 472\MECH_Project\ImageProcessing\player2_keyboard\Debug\program.exe
+>>>>>>> d86e951bf3d3bdf8442cb26adc7571470968e0dd
