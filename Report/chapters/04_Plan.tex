@@ -14,8 +14,8 @@ Always  goushi hide self robot behind a obstacle and keep two robots and obstacl
 \end{figure}
 
 \section{The tactics of hiding}
-In order to implement the strategies above, detail tactics will be introduced. As we can see in the figure \ref{hiding_static}. Here we assume that there are three obstacles (1~3 obstacles in the environment randomly placed in the central part of the environment) in workspace. The red points are the centre of obstacles and robot,  $O$ point is the centre of opponent robot and $P$ point is the centre of my robot. In hiding model,  my robot need to move to hiding point behind the obstacles quickly. But how to pick the specific hiding point is a difficult problem to be solved. There is a feasible solution to be introduced.
-Three straight lines (auxiliary lines) pass through the center of the opponent robot and the center of the obstacle, they are line $OD$, line $OE$ and line $OF$. The vertical feet are point $A$, point $B$ and point $C$, when make vertical lines from point $P$ to these three lines— line $OD$, line $OE$, line $OF$. My robot will regard C point as the best hiding point. Compared with other hiding points ($A$ position and $B$ position) $C$ is the nearest point where to the current my robot position. According to the position of obstacles and robot (my robot and opponent robot), the algorithm of hiding model will update the dynamic hiding point to avoid the hit and attack from opponent robot.
+In order to implement the strategies above, detail tactics will be introduced. As we can see in the figure \ref{hiding_tactic}. Here we assume that there are three obstacles (1~3 obstacles in the environment randomly placed in the central part of the environment) in workspace. The red points are the centre of obstacles and robot,  $O$ point is the centre of opponent robot and $P$ point is the centre of my robot. In hiding model,  my robot need to move to hiding point behind the obstacles quickly. But how to pick the specific hiding point is a difficult problem to be solved. There is a feasible solution to be introduced.
+Three straight lines (auxiliary lines) pass through the center of the opponent robot and the center of the obstacle, they are line $OD$, line $OE$ and line $OF$. The vertical feet are point $A$, point $B$ and point $C$, when make vertical lines from point $P$ to these three lines— line $OD$, line $OE$, line $OF$. My robot will regard C point as the best hiding point. Compared with other hiding points ($A$ position and $B$ position) $C$ is the nearest point where to the current my robot position. According to the position of obstacles and robot (my robot and opponent robot), the algorithm of hiding model will update the dynamic hiding point to avoid the hit and attack from opponent robot.
 
 \begin{figure}[thb]
     \centering
@@ -23,7 +23,7 @@ Three straight lines (auxiliary lines) pass through the center of the opponent 
     \caption[an tactics for  hiding strategy]{an tactics for  hiding strategy.}\label{hiding_tactic}
 \end{figure}
 
-\section{The implement of hiding}
+\section{The implementation of hiding}
 In order to find the nearest point that satisfies the condition, an obstacle between the self and enemy, the foot of perpendicular from current position to the straight-line connecting enemy and obstacles, as shown in figure \ref{hiding_implement1}
 
 \begin{figure}[thb]

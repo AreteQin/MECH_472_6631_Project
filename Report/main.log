@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2022.3.18)  1 MAY 2022 21:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2022.3.18)  3 MAY 2022 21:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1026,7 +1026,7 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \@thisruleclass=\count418
 \@lastruleclass=\count419
 \@thisrulewidth=\dimen188
-)) (c:/texlive/2020/texmf-dist/tex/latex/makecell/makecell.sty
+) (c:/texlive/2020/texmf-dist/tex/latex/makecell/makecell.sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
  (c:/texlive/2020/texmf-dist/tex/latex/tools/array.sty
 Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
@@ -1041,19 +1041,59 @@ Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \rotheadsize=\dimen191
 \c@nlinenum=\count420
 \TeXr@lab=\toks32
+)) (c:/texlive/2020/texmf-dist/tex/latex/adjustbox/adjustbox.sty
+Package: adjustbox 2019/01/04 v1.2 Adjusting TeX boxes (trim, clip, ...)
+ (c:/texlive/2020/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+ (c:/texlive/2020/texmf-dist/tex/generic/xkeyval/xkeyval.tex (c:/texlive/2020/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks33
+\XKV@tempa@toks=\toks34
 )
+\XKV@depth=\count421
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (c:/texlive/2020/texmf-dist/tex/latex/adjustbox/adjcalc.sty
+Package: adjcalc 2012/05/16 v1.1 Provides advanced setlength with multiple back-ends (calc, etex, pgfmath)
+) (c:/texlive/2020/texmf-dist/tex/latex/adjustbox/trimclip.sty
+Package: trimclip 2018/04/08 v1.1 Trim and clip general TeX material
+ (c:/texlive/2020/texmf-dist/tex/latex/collectbox/collectbox.sty
+Package: collectbox 2012/05/17 v0.4b Collect macro arguments as boxes
+\collectedbox=\box54
+)
+\tc@llx=\dimen192
+\tc@lly=\dimen193
+\tc@urx=\dimen194
+\tc@ury=\dimen195
+Package trimclip Info: Using driver 'tc-pdftex.def'.
+ (c:/texlive/2020/texmf-dist/tex/latex/adjustbox/tc-pdftex.def
+File: tc-pdftex.def 2019/01/04 v2.2 Clipping driver for pdftex
+))
+\adjbox@Width=\dimen196
+\adjbox@Height=\dimen197
+\adjbox@Depth=\dimen198
+\adjbox@Totalheight=\dimen199
+\adjbox@pwidth=\dimen256
+\adjbox@pheight=\dimen257
+\adjbox@pdepth=\dimen258
+\adjbox@ptotalheight=\dimen259
+ (c:/texlive/2020/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
+Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
+\c@checkoddpage=\count422
+) (c:/texlive/2020/texmf-dist/tex/latex/varwidth/varwidth.sty
+Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
+\@vwid@box=\box55
+\sift@deathcycles=\count423
+\@vwid@loff=\dimen260
+\@vwid@roff=\dimen261
+))
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'english'.
  (c:/texlive/2020/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count421
-\l__pdf_internal_box=\box54
+\l__kernel_color_stack_int=\count424
+\l__pdf_internal_box=\box56
 ) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/main.aux
-
-LaTeX Warning: Label `intro' multiply defined.
-
 
 LaTeX Warning: Label `intro' multiply defined.
 
@@ -1126,7 +1166,7 @@ Package biblatex Info: ... file 'main.bbl' found.
  (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/main.bbl)
 Package biblatex Info: Reference section=0 on input line 9.
 Package biblatex Info: Reference segment=0 on input line 9.
-\AtBeginShipoutBox=\box55
+\AtBeginShipoutBox=\box57
 Package hyperref Info: Link coloring ON on input line 9.
  (c:/texlive/2020/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
@@ -1135,7 +1175,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (c:/texlive/2020/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count422
+\c@section@level=\count425
 )
 LaTeX Info: Redefining \ref on input line 9.
 LaTeX Info: Redefining \pageref on input line 9.
@@ -1150,31 +1190,36 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
  (c:/texlive/2020/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count423
-\scratchdimen=\dimen192
-\scratchbox=\box56
-\nofMPsegments=\count424
-\nofMParguments=\count425
-\everyMPshowfont=\toks33
-\MPscratchCnt=\count426
-\MPscratchDim=\dimen193
-\MPnumerator=\count427
-\makeMPintoPDFobject=\count428
-\everyMPtoPDFconversion=\toks34
+\scratchcounter=\count426
+\scratchdimen=\dimen262
+\scratchbox=\box58
+\nofMPsegments=\count427
+\nofMParguments=\count428
+\everyMPshowfont=\toks35
+\MPscratchCnt=\count429
+\MPscratchDim=\dimen263
+\MPnumerator=\count430
+\makeMPintoPDFobject=\count431
+\everyMPtoPDFconversion=\toks36
 ) (c:/texlive/2020/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
  (c:/texlive/2020/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@lstlisting=\count429
+\c@lstlisting=\count432
  (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/config/metadata.tex) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/front_matter/title.tex
-<images/brunel.png, id=40, 1034.6655pt x 318.59026pt>
+<images/brunel.png, id=68, 1034.6655pt x 318.59026pt>
 File: images/brunel.png Graphic file (type png)
 <use images/brunel.png>
 Package pdftex.def Info: images/brunel.png  used on input line 3.
 (pdftex.def)             Requested size: 398.33858pt x 122.6552pt.
- [1
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--20
+
+ []
+
+[1
 
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/brunel.png>]) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/front_matter/abstract.texpdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
@@ -1210,84 +1255,181 @@ l.1 \newpage\null\thispagestyle{empty}\newpage
 
 ]
 Chapter 1.
-<images/intro.png, id=113, 642.4pt x 481.8pt>
+<images/intro.png, id=186, 642.4pt x 481.8pt>
 File: images/intro.png Graphic file (type png)
 <use images/intro.png>
 Package pdftex.def Info: images/intro.png  used on input line 10.
-(pdftex.def)             Requested size: 399.47578pt x 299.61716pt.
-<images/vehicle_model.png, id=114, 324.46219pt x 333.49594pt>
+(pdftex.def)             Requested size: 199.73788pt x 149.8049pt.
+<images/vehicle_model.png, id=188, 324.46219pt x 333.49594pt>
 File: images/vehicle_model.png Graphic file (type png)
 <use images/vehicle_model.png>
 Package pdftex.def Info: images/vehicle_model.png  used on input line 20.
-(pdftex.def)             Requested size: 399.47578pt x 410.62502pt.
-<images/wheel_model.png, id=115, 285.31593pt x 238.64156pt>
+(pdftex.def)             Requested size: 199.73788pt x 205.29979pt.
+<images/wheel_model.png, id=189, 285.31593pt x 238.64156pt>
 File: images/wheel_model.png Graphic file (type png)
 <use images/wheel_model.png>
 Package pdftex.def Info: images/wheel_model.png  used on input line 30.
-(pdftex.def)             Requested size: 399.47578pt x 334.12865pt.
+(pdftex.def)             Requested size: 199.73788pt x 167.0625pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.32 \end{figure}
-                  [1
+l.36 $$ v_c = (v_r+v_l)/2 $$
+                             [1
 
  <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/intro.png (PNG copy)>]
-Overfull \hbox (45.30266pt too wide) in paragraph at lines 43--56
+<images/system_flow.png, id=198, 462.72874pt x 554.07pt>
+File: images/system_flow.png Graphic file (type png)
+<use images/system_flow.png>
+Package pdftex.def Info: images/system_flow.png  used on input line 46.
+(pdftex.def)             Requested size: 319.58183pt x 382.67226pt.
+
+Overfull \hbox (17.66463pt too wide) in paragraph at lines 53--68
 [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/chapters/02_litrev.tex [2 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/vehicle_model.png>] [3 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/wheel_model.png>]
+
+Overfull \hbox (35.50444pt too wide) in paragraph at lines 77--96
+ [][] 
+ []
+
+[2 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/vehicle_model.png> <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/wheel_model.png>]) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/chapters/02_litrev.tex [3 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/system_flow.png>] [4]
 Chapter 2.
+<images/Image processing flowchart.png, id=219, 366.168pt x 131.2905pt>
+File: images/Image processing flowchart.png Graphic file (type png)
+<use images/Image processing flowchart.png>
+Package pdftex.def Info: images/Image processing flowchart.png  used on input line 10.
+(pdftex.def)             Requested size: 399.47578pt x 143.23601pt.
+<images/different_threshold.png, id=221, 969.6225pt x 304.7385pt>
+File: images/different_threshold.png Graphic file (type png)
+<use images/different_threshold.png>
+Package pdftex.def Info: images/different_threshold.png  used on input line 18.
+(pdftex.def)             Requested size: 399.47578pt x 125.55272pt.
 
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 17.
 
-<images/wrong_position.png, id=138, 476.982pt x 381.22424pt>
-File: images/wrong_position.png Graphic file (type png)
-<use images/wrong_position.png>
-Package pdftex.def Info: images/wrong_position.png  used on input line 26.
-(pdftex.def)             Requested size: 399.47578pt x 319.28383pt.
-<images/access_error.png, id=139, 596.82974pt x 181.8795pt>
-File: images/access_error.png Graphic file (type png)
-<use images/access_error.png>
-Package pdftex.def Info: images/access_error.png  used on input line 32.
-(pdftex.def)             Requested size: 399.47578pt x 121.73929pt.
-) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/chapters/03_methodology.tex [4
+pdfTeX warning: pdflatex.exe (file c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/Id_flow.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<images/Id_flow.pdf, id=223, 463.16106pt x 570.80452pt>
+File: images/Id_flow.pdf Graphic file (type pdf)
+<use images/Id_flow.pdf>
+Package pdftex.def Info: images/Id_flow.pdf  used on input line 28.
+(pdftex.def)             Requested size: 399.47578pt x 492.31943pt.
+[5
 
-] [5 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/wrong_position.png> <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/access_error.png>]
+ <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/Image processing flowchart.png> <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/different_threshold.png>]
+<images/IP_result.png, id=234, 481.8pt x 389.65575pt>
+File: images/IP_result.png Graphic file (type png)
+<use images/IP_result.png>
+Package pdftex.def Info: images/IP_result.png  used on input line 53.
+(pdftex.def)             Requested size: 239.6879pt x 193.84634pt.
+<images/IP_result2.jpeg, id=235, 491.8375pt x 640.3925pt>
+File: images/IP_result2.jpeg Graphic file (type jpg)
+<use images/IP_result2.jpeg>
+Package pdftex.def Info: images/IP_result2.jpeg  used on input line 59.
+(pdftex.def)             Requested size: 239.6879pt x 312.08504pt.
+) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/chapters/2.5_PathPlanning.tex [6 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/Id_flow.pdf>] [7 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/IP_result.png> <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/IP_result2.jpeg>]
 Chapter 3.
-) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/chapters/04_Plan.tex [6
+<images/PathPlaningPathPoint.png, id=247, 793.16325pt x 565.51276pt>
+File: images/PathPlaningPathPoint.png Graphic file (type png)
+<use images/PathPlaningPathPoint.png>
+Package pdftex.def Info: images/PathPlaningPathPoint.png  used on input line 10.
+(pdftex.def)             Requested size: 399.47578pt x 284.81801pt.
+[8
+
+ <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/PathPlaningPathPoint.png (PNG copy)>]
+<images/PathPlaningSampling.png, id=253, 605.8635pt x 493.24275pt>
+File: images/PathPlaningSampling.png Graphic file (type png)
+<use images/PathPlaningSampling.png>
+Package pdftex.def Info: images/PathPlaningSampling.png  used on input line 26.
+(pdftex.def)             Requested size: 399.47578pt x 325.22511pt.
+ [9 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/PathPlaningSampling.png (PNG copy)>]
+<images/PathPlaningRotationMarix.png, id=261, 525.162pt x 317.38576pt>
+File: images/PathPlaningRotationMarix.png Graphic file (type png)
+<use images/PathPlaningRotationMarix.png>
+Package pdftex.def Info: images/PathPlaningRotationMarix.png  used on input line 35.
+(pdftex.def)             Requested size: 399.47578pt x 241.42392pt.
+<images/PathPlaningUpdatePathPoint.png, id=264, 899.15926pt x 522.753pt>
+File: images/PathPlaningUpdatePathPoint.png Graphic file (type png)
+<use images/PathPlaningUpdatePathPoint.png>
+Package pdftex.def Info: images/PathPlaningUpdatePathPoint.png  used on input line 69.
+(pdftex.def)             Requested size: 399.47578pt x 232.24547pt.
+ [10 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/PathPlaningRotationMarix.png (PNG copy)>]
+<images/part1.png, id=276, 963.6pt x 297.5115pt>
+File: images/part1.png Graphic file (type png)
+<use images/part1.png>
+Package pdftex.def Info: images/part1.png  used on input line 83.
+(pdftex.def)             Requested size: 399.47578pt x 123.33786pt.
+<images/part2.png, id=278, 847.968pt x 283.65974pt>
+File: images/part2.png Graphic file (type png)
+<use images/part2.png>
+Package pdftex.def Info: images/part2.png  used on input line 92.
+(pdftex.def)             Requested size: 399.47578pt x 133.63173pt.
+) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/chapters/03_methodology.tex [11 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/PathPlaningUpdatePathPoint.png (PNG copy)> <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/part1.png (PNG copy)>] [12 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/part2.png (PNG copy)>]
+Chapter 4.
+) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/chapters/04_Plan.tex [13
 
 ]
-Chapter 4.
-<images/hiding_strategy.png, id=157, 534.19576pt x 187.902pt>
+Chapter 5.
+<images/hiding_strategy.png, id=294, 534.19576pt x 187.902pt>
 File: images/hiding_strategy.png Graphic file (type png)
 <use images/hiding_strategy.png>
-Package pdftex.def Info: images/hiding_strategy.png  used on input line 9.
+Package pdftex.def Info: images/hiding_strategy.png  used on input line 12.
 (pdftex.def)             Requested size: 399.47578pt x 140.51614pt.
-<images/attacking_method2.png, id=159, 581.17125pt x 263.18324pt>
+[14
+
+ <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/hiding_strategy.png>]
+<images/PathPlaningHidingModel.png, id=302, 582.37575pt x 564.30824pt>
+File: images/PathPlaningHidingModel.png Graphic file (type png)
+<use images/PathPlaningHidingModel.png>
+Package pdftex.def Info: images/PathPlaningHidingModel.png  used on input line 22.
+(pdftex.def)             Requested size: 399.47578pt x 387.09988pt.
+<images/implementofhiding1.png, id=304, 361.35pt x 280.04625pt>
+File: images/implementofhiding1.png Graphic file (type png)
+<use images/implementofhiding1.png>
+Package pdftex.def Info: images/implementofhiding1.png  used on input line 31.
+(pdftex.def)             Requested size: 399.47578pt x 309.5944pt.
+ [15 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/PathPlaningHidingModel.png (PNG copy)>]
+<images/implementofhiding2.png, id=310, 341.47575pt x 196.93575pt>
+File: images/implementofhiding2.png Graphic file (type png)
+<use images/implementofhiding2.png>
+Package pdftex.def Info: images/implementofhiding2.png  used on input line 40.
+(pdftex.def)             Requested size: 399.47578pt x 230.38683pt.
+ [16 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/implementofhiding1.png>]
+<images/implementofhiding3-1.png, id=320, 448.67625pt x 139.11975pt>
+File: images/implementofhiding3-1.png Graphic file (type png)
+<use images/implementofhiding3-1.png>
+Package pdftex.def Info: images/implementofhiding3-1.png  used on input line 65.
+(pdftex.def)             Requested size: 191.74666pt x 59.45308pt.
+<images/implementofhiding3-2.png, id=321, 469.755pt x 137.91525pt>
+File: images/implementofhiding3-2.png Graphic file (type png)
+<use images/implementofhiding3-2.png>
+Package pdftex.def Info: images/implementofhiding3-2.png  used on input line 66.
+(pdftex.def)             Requested size: 191.74666pt x 56.29518pt.
+<images/implementofhiding4.png, id=323, 546.04pt x 461.725pt>
+File: images/implementofhiding4.png Graphic file (type png)
+<use images/implementofhiding4.png>
+Package pdftex.def Info: images/implementofhiding4.png  used on input line 74.
+(pdftex.def)             Requested size: 399.47578pt x 337.79622pt.
+ [17 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/implementofhiding2.png> <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/implementofhiding3-1.png> <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/implementofhiding3-2.png>]
+<images/attacking_method2.png, id=334, 581.17125pt x 263.18324pt>
 File: images/attacking_method2.png Graphic file (type png)
 <use images/attacking_method2.png>
-Package pdftex.def Info: images/attacking_method2.png  used on input line 26.
+Package pdftex.def Info: images/attacking_method2.png  used on input line 91.
 (pdftex.def)             Requested size: 399.47578pt x 180.9059pt.
 ) (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/back_matter/references.tex
 
 LaTeX Warning: Empty bibliography on input line 1.
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 44.
- [7
-
- <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/hiding_strategy.png>] [8 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/attacking_method2.png>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 44.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 45.
+ [18 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/implementofhiding4.png>] [19 <c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/images/attacking_method2.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 45.
  (c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 44.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 44.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 45.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 45.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A53AF355F02778E30FD5EB4E9D3E5F04;504.
+(rerunfilecheck)             Checksum: 00EA5787CC17A653A897E7840ED51440;972.
 
 
 LaTeX Warning: There were multiply-defined labels.
@@ -1297,18 +1439,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 18880 strings out of 480608
- 316378 string characters out of 5907536
- 1004955 words of memory out of 5000000
- 34392 multiletter control sequences out of 15000+600000
- 547174 words of font info for 55 fonts, out of 8000000 for 9000
+ 20064 strings out of 480608
+ 337368 string characters out of 5907536
+ 1029451 words of memory out of 5000000
+ 35480 multiletter control sequences out of 15000+600000
+ 546406 words of font info for 54 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,15n,47p,1331b,1717s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on "c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/main.pdf" (16 pages, 775808 bytes).
+ 44i,15n,79p,1331b,1717s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2020/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx1728.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx2074.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfbx2488.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfcc1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1000.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on "c:/Users/qinqi/OneDrive - Concordia University - Canada/Concordia/Courses/6631 Mechatronics and Automation/MECH_472_6631_Project/Report/main.pdf" (27 pages, 2985938 bytes).
 PDF statistics:
- 226 PDF objects out of 1000 (max. 8388607)
- 178 compressed objects within 2 object streams
- 39 named destinations out of 1000 (max. 500000)
- 113 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 417 PDF objects out of 1000 (max. 8388607)
+ 331 compressed objects within 4 object streams
+ 82 named destinations out of 1000 (max. 500000)
+ 249 words of extra memory for PDF output out of 10000 (max. 10000000)
 
