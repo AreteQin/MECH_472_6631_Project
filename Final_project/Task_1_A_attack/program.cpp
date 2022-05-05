@@ -235,7 +235,7 @@ int get_positions_from_image(image rgb, int self_colour,
 		objects[i-1].identify_object(rgb, label_map, self_colour);
 		std::cout << "id: x,y,label: " << objects[i - 1].get_id() << ": " <<
 			ic[i] << " " << jc[i] << " " << objects[i - 1].get_label_value()<< std::endl;
-		draw_point_rgb(rgb, ic[i], jc[i], 0, 0, 255);
+		//draw_point_rgb(rgb, ic[i], jc[i], 0, 0, 255);
 	}
 
 	free_image(temp_image);
@@ -246,10 +246,13 @@ int get_positions_from_image(image rgb, int self_colour,
 // check whether a pixel is part of obstacls
 // return true if it is free
 bool check_space(std::vector<object> objects, int i, int j) {
-	double obstacle_radius = 50;
+	double obstacle_radius = 80;
+	if (i < 20 || i>620 || j < 20 || j>460) {
+		return false;
+	}
 	for (int k = 0; k < objects.size(); k++) {
 		if (objects[k].get_id() == 5) {
-			double distance = sqrt((i - objects[k].get_position_x()) * (i - objects[k].get_position_x())+
+			double distance = sqrt((i - objects[k].get_position_x()) * (i - objects[k].get_position_x()) +
 				(j - objects[k].get_position_y()) * (j - objects[k].get_position_y()));
 			if (distance < obstacle_radius) {
 				return false;
@@ -625,15 +628,15 @@ int main()
 	height1 = 480;
 
 	// number of obstacles
-	N_obs = 0;
+	N_obs = 2;
 
-	//x_obs[1] = 270; // pixels
-	//y_obs[1] = 240; // pixels
-	//size_obs[1] = 1.0; // scale factor 1.0 = 100% (not implemented yet)	
+	x_obs[1] = 270; // pixels
+	y_obs[1] = 240; // pixels
+	size_obs[1] = 1.0; // scale factor 1.0 = 100% (not implemented yet)	
 
-	//x_obs[2] = 400; // pixels
-	//y_obs[2] = 300; // pixels
-	//size_obs[2] = 1.0; // scale factor 1.0 = 100% (not implemented yet)	
+	x_obs[2] = 400; // pixels
+	y_obs[2] = 300; // pixels
+	size_obs[2] = 1.0; // scale factor 1.0 = 100% (not implemented yet)	
 
 	// set robot model parameters ////////
 
@@ -764,7 +767,7 @@ int main()
 		laser_x = self_position_x + 31 * cos(self_position_theta);
 		laser_y = self_position_y + 31 * sin(self_position_theta);
 		
-		draw_point_rgb(rgb, laser_x, laser_y, 0, 255, 0);
+		//draw_point_rgb(rgb, laser_x, laser_y, 0, 255, 0);
 
 		if (distance(self_position_x, self_position_y, self_rear.get_position_x(), self_rear.get_position_y()) < 100 ){
 
@@ -826,8 +829,14 @@ int main()
 		x_rear = self_rear.get_position_x();
 		y_rear = self_rear.get_position_y();
 
-		purepursuit(B_Global_End[0], B_Global_End[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
-		inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
+		if (check_space(objects, B_Global_End[0], B_Global_End[1])) {
+			purepursuit(B_Global_End[0], B_Global_End[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
+			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
+		}
+		else {
+			purepursuit(width / 2, height / 2, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
+			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
+		}
 
 		//Fire conditions
 		laser_track(laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y(), pw_laser);
@@ -878,7 +887,7 @@ int main()
 		view_rgb_image(rgb);
 
 		// don't need to simulate too fast
-		Sleep(10); // 100 fps max
+		//Sleep(1); // 100 fps max
 	}
 
 	// free the image memory before the program completes
