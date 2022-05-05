@@ -1,0 +1,13 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Image Processing}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Locating Objects}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{Identifying Objects}{chapter.2}% 4
+\BOOKMARK [0][-]{chapter.3}{Path planning}{}% 5
+\BOOKMARK [1][-]{section.3.1}{The principle and process of ASIA}{chapter.3}% 6
+\BOOKMARK [1][-]{section.3.2}{The implement of ASIA}{chapter.3}% 7
+\BOOKMARK [0][-]{chapter.4}{Robot Control}{}% 8
+\BOOKMARK [0][-]{chapter.5}{Hiding and Attacking Strategies}{}% 9
+\BOOKMARK [1][-]{section.5.1}{Hiding}{chapter.5}% 10
+\BOOKMARK [1][-]{section.5.2}{The tactics of hiding}{chapter.5}% 11
+\BOOKMARK [1][-]{section.5.3}{The implementation of hiding}{chapter.5}% 12
+\BOOKMARK [1][-]{section.5.4}{Attacking}{chapter.5}% 13
