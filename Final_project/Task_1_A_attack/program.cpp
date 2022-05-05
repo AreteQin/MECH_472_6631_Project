@@ -499,9 +499,9 @@ void PathTrack(int OneViewPoint[2], int A_Global_Start[2], int B_Global_End[2], 
 
 const double pi = 3.14159265358979323846;
 
-void laser_track(double x, double y, double theta, double enemy_x, double enemy_y, double erear_x, double erear_y, int& pw_laser) {
+void laser_track(double x, double y, double theta, double enemy_x, double enemy_y, double erear_x, double erear_y, int& pw_laser, double& e_ang) {
 
-	double dc, dr, e_ang, alpha;
+	double dc, dr, alpha;
 
 	dc = distance(x, y, enemy_x, enemy_y);
 	dr = distance(x, y, erear_x, erear_y);
@@ -532,73 +532,43 @@ void laser_track(double x, double y, double theta, double enemy_x, double enemy_
 
 }
 
-int npixels(image label_im, int label) {
-	int n_pixel = 0;
-	ibyte* p;
+int free_path( std::vector<object> objects, double laser_x, double laser_y, double theta, double enemy_x, double enemy_y, double erear_x, double erear_y) {
 
-	p = label_im.pdata;
+	int x_path, y_path, path_free = 1;
+	double r, phi, d_front, d_rear;
 
-	for (int j = 0; j < label_im.height; j++) {
-		for (int i = 0; i < label_im.width; i++) {
+	d_front = distance(laser_x, laser_y, enemy_x, enemy_y);
+	d_rear = distance(laser_x, laser_y, erear_x, erear_y);
 
-			if (p[i + j * label_im.width] == label) {
-				n_pixel++;
+	if (d_front < d_rear) {
 
-			}
-
-		}
-
-
+		phi = atan2(enemy_y - laser_y, enemy_x - laser_x);
+		r = d_front;
 	}
-	return n_pixel;
+	else
+	{
+		phi = atan2(erear_y - laser_y, erear_x - laser_x);
+		r = d_rear;
+	}
 
-}
-
-int npixelspath(double enemy_position_y, double laser_y, double enemy_position_x, double laser_x) {
-
-	double phi, r;
-	int np;
-
-	phi = atan2(enemy_position_y - laser_y, enemy_position_x - laser_x);
-	r = distance(laser_x, laser_y, enemy_position_x, enemy_position_y);
+	/*phi = atan2(enemy_y - laser_y, enemy_x - laser_x);
+	r = distance(laser_x, laser_y, enemy_x, enemy_y);*/
 
 
 	for (int d = 0; d < r; d++) {
-			
-		np = d;
+
+		x_path = (int)(laser_x + d * cos(phi));
+		y_path = (int)(laser_y + d * sin(phi));
+
+		if (check_space(objects, x_path, y_path) == 0) {
+			//path crosses an obstacle
+			path_free = 0;
 
 		}
-
-	return np;
-}
-
-int free_path( std::vector<object> objects, double x, double y, double theta, double enemy_x, double enemy_y, double erear_x, double erear_y) {
-
-	ibyte* p;
-	int* obs_pixel, n_obspixel, width, height, k = 0;
-
-	//Calculate number of pixels that contain obstacles
-	n_obspixel = npixelspath(enemy_y,y,enemy_x,x);
-
-	obs_pixel = new int[n_obspixel];
-
-	//Check for obstacle pixels positions
-	for (int j = 0; j < height; j++) {
-		for (int i = 0; i < width; i++) {
-
-			if (check_space(objects,i,j)) {
-
-				obs_pixel[k] = i + j * width;
-				k++;
-			}
-		}
+	
 	}
 
-
-
-	delete[] obs_pixel;
-
-	return 1;
+	return path_free;
 }
 
 ////////////////////// End of Attack functions ////////////////////////////////////////////////////////////////
@@ -630,8 +600,13 @@ int main()
 	// number of obstacles
 	N_obs = 2;
 
+<<<<<<< HEAD
 	x_obs[1] = 270; // pixels
 	y_obs[1] = 240; // pixels
+=======
+	x_obs[1] = 280; // pixels
+	y_obs[1] = 200; // pixels
+>>>>>>> a4b3722a9d7d1a1749ef93d7c874801fe82757f2
 	size_obs[1] = 1.0; // scale factor 1.0 = 100% (not implemented yet)	
 
 	x_obs[2] = 400; // pixels
@@ -820,11 +795,8 @@ int main()
 
 		///////////////////////Controlling/////////////////////////////////////////
 
-		double x_rear, y_rear, x_ref, y_ref;
-		double e_p, e_ang;
-
-		/*x_ref = 150;
-		y_ref = 400;*/
+		double x_rear, y_rear;
+		double e_p, e_ang,l_ang;
 
 		x_rear = self_rear.get_position_x();
 		y_rear = self_rear.get_position_y();
@@ -839,30 +811,47 @@ int main()
 		}
 
 		//Fire conditions
-		laser_track(laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y(), pw_laser);
+		laser_track(laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y(), pw_laser, l_ang);
 		
-		////
-		// TEST 
-		////
+		if (free_path(objects, laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y())) {
 
-		ibyte *prgb;
-		int R, G, B, ig, jg;
-		double phi,r;
-
-		phi = atan2(enemy_position_y - laser_y, enemy_position_x - laser_x);
-		r = distance(laser_x, laser_y, enemy_position_x, enemy_position_y);
-
-		prgb = rgb.pdata;
-
-		/*for (int d = 0; d < r; d++) {
+			std::cout << "PATH IS FREE!" << "\n";
+			if (abs(l_ang) < 0.1) {
+				laser = 1;
+				
+			}
 			
-			ig = laser_x + d * cos(phi);
-			jg = laser_y + d * sin(phi);
+		}
+		else
+		{
+			std::cout << "PATH IS NOT FREE! " << "\n";
+		}
 
-			prgb[ig + jg * width] = 0;
-			prgb[ig + jg * width + 1] = 255;
-			prgb[ig + jg * width + 2] = 0;
+		
+		/*int  ig, jg;
+		double phi,d_front,d_rear,r;
 
+		d_front = distance(laser_x, laser_y, enemy_position_x, enemy_position_y);
+		d_rear = distance(laser_x, laser_y, enemy_rear.get_position_x(), enemy_rear.get_position_y());
+
+		if (d_front < d_rear) {
+
+			phi = atan2(enemy_position_y - laser_y, enemy_position_x - laser_x);
+			r = d_front;
+		}
+		else
+		{
+			phi = atan2(enemy_rear.get_position_y() - laser_y, enemy_rear.get_position_x() - laser_x);
+			r = d_rear;
+		}
+		
+
+		for (int d = 0; d < r; d++) {
+
+			ig = (int)(laser_x + d * cos(phi));
+			jg = (int)(laser_y + d * sin(phi));
+			
+			draw_point_rgb(rgb, ig, jg, 255, 0, 0);
 		}*/
 
 
@@ -870,13 +859,15 @@ int main()
 			light, light_gradient, light_dir, image_noise,
 			max_speed, opponent_max_speed);
 
+		laser = 0;
+
 		/////////// Printing data /////////////////
 
 		std::cout << "time is: " << tc << "\n";
 		std::cout << "v_cmd is: " << v_cmd << "\n";
 		std::cout << "w_cmd is: " << w_cmd << "\n";
-		std::cout << "phi is: " << phi << "\n";
-		std::cout << "r is: " << r << "\n";
+		std::cout << "laser error is: " << l_ang << "\n";
+		
 
 
 		fout << tc << "," << self_position_theta << "," << self_position_x << "," << self_position_y << ",";
