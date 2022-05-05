@@ -18,6 +18,8 @@
 
 #include "timer.h"
 
+const double pi = 3.14159265358979323846;
+
 extern robot_system S1;
 
 int main()
@@ -106,9 +108,9 @@ int main()
 	set_simulation_mode(mode,level);	
 	
 	// set robot initial position (pixels) and angle (rad)
-	x0 = 200;
-	y0 = 150;
-	theta0 = -1;
+	x0 = 550;    
+	y0 = 380;
+	theta0 = 1.5;
 
 	set_robot_position(x0,y0,theta0);
 	
@@ -186,7 +188,7 @@ int main()
 
 	std::cout << "Start" << std::endl;
 
-	double dpw = 250;
+	double dpw = 500;
 
 	while(1) {
 		
