@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  program.cpp
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(272,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(287,20): warning C4018: '<': signed/unsigned mismatch
@@ -36,3 +37,6 @@ C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 M
 image_transfer.lib(image_transfer.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(image_transfer.obj)' or at 'C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\Debug\program.pdb'; linking object as if no debug info
 image_transfer.lib(Video_IO.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(Video_IO.obj)' or at 'C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\Debug\program.pdb'; linking object as if no debug info
   program.vcxproj -> C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\Debug\program.exe
+=======
+﻿  program.vcxproj -> C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\Control_Implemented\Ctlr_implemented_V1_Doesnotwork\player1_Im\Debug\program.exe
+>>>>>>> a6a96371e006e1a2fdd71f3f9b90397a99d35ecc

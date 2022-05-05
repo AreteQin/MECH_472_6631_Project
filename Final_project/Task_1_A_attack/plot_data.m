@@ -13,13 +13,15 @@ opts.DataLines = [1, Inf];
 opts.Delimiter = ",";
 
 % Specify column names and types
-opts.VariableNames = ["time", "theta", "x", "y", "pw_r", "pw_l", "vr", "vl", "v_cmd", "w_cmd", "e_p", "e_ang"];
-opts.VariableTypes = ["double", "double", "double", "double", "double", "double", "double", "double", "double", "double", "double", "double"];
+opts.VariableNames = ["time", "theta", "x", "y", "pw_r", "pw_l", "vr", "vl", "v_cmd", "w_cmd", "e_p",...
+                        "e_ang", "l_ang", "enemy_theta", "enemy_x", "enemy_y"];
+opts.VariableTypes = ["double", "double", "double", "double", "double", "double", "double", "double",...
+                        "double", "double", "double", "double","double", "double", "double", "double"];
 opts.ExtraColumnsRule = "ignore";
 opts.EmptyLineRule = "read";
 
 % Import the data
-tbl = readtable("C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Ctlr_implemented\player1_Im\sim1.csv", opts);
+tbl = readtable("C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\sim1.csv", opts);
 
 %% Convert to output type
 time = tbl.time;
@@ -34,6 +36,10 @@ v_cmd = tbl.v_cmd;
 w_cmd = tbl.w_cmd;
 e_p = tbl.e_p;
 e_ang = tbl.e_ang;
+l_ang = tbl.l_ang;
+enemy_theta = tbl.enemy_theta;
+enemy_x = tbl.enemy_x;
+enemy_y = tbl.enemy_y;
 
 %% Clear temporary variables
 clear opts tbl
@@ -94,3 +100,23 @@ clear opts tbl
  xlabel("Time")
  ylabel("e_ang")
 
+figure
+ subplot(2,2,1)
+ plot(time,enemy_x)
+ xlabel("Time")
+ ylabel("Position X")
+ 
+ subplot(2,2,2)
+ plot(time,enemy_y)
+ xlabel("Time")
+ ylabel("Position Y")
+ 
+ subplot(2,2,3)
+ plot(time,enemy_theta)
+ xlabel("Time")
+ ylabel("Enemy orientation")
+ 
+ subplot(2,2,4)
+ plot(time,l_ang)
+ xlabel("Time")
+ ylabel("Laser error")

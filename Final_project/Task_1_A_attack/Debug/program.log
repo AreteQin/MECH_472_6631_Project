@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿  object.cpp
   program.cpp
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_1_A_attack\program.cpp(253,20): warning C4018: '<': signed/unsigned mismatch
@@ -46,3 +47,6 @@ C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 M
 image_transfer.lib(image_transfer.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(image_transfer.obj)' or at 'C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_1_A_attack\Debug\program.pdb'; linking object as if no debug info
 image_transfer.lib(Video_IO.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(Video_IO.obj)' or at 'C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_1_A_attack\Debug\program.pdb'; linking object as if no debug info
   program.vcxproj -> C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_1_A_attack\Debug\program.exe
+=======
+﻿  program.vcxproj -> C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\Debug\program.exe
+>>>>>>> a6a96371e006e1a2fdd71f3f9b90397a99d35ecc

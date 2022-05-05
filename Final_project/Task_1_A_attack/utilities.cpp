@@ -63,7 +63,7 @@ void poscontroller(double xref, double yref, double x, double y, double theta, d
 void purepursuit(double xref, double yref, double x, double y, double theta, double x_rear, 
 	double y_rear, double& v_cmd, double& w_cmd, double vr, double vl, double &e_p, double &e_ang) {
 
-	double kh = 4, kd = 0, ki = 0.005,kp = 2;
+	double kh = 4, kd = 0, ki = 0.005,kp = 4;
 	//double e_p, e_ang, 
 	double d = 1;
 	double dis_c_rear;
