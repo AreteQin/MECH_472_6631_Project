@@ -1,0 +1,70 @@
+\chapter{Conclusion and Future Work}
+\section{Conclusion}
+\label{sec:conclusion}
+
+The first objective is "Undertaking a literature review on \ac{SLAM}, study the mathematic background, read papers, books, online articles and find the state-of-the-art methods".
+
+This is accomplished in chapter \ref{02_litrev} by introducing the basic structure of SLAM systems, Feature-based methods, Direct methods and \ac{ICP}. In addition, a simple study and comparison of optimization methods are also carried out. 
+
+The second objective is "Making judgments on different methods and articles. Analyzing the advantages and disadvantages of each method".
+
+This is accomplished in chapter \ref{02_litrev} by introducing two main different methods ORB-SLAM \parencite{7219438} and LSD-SLAM \parencite{7353366}. In addition, several different keyframe methods are compared. In the end, BAD-SLAM \parencite{8954208} is determined to be one of the most suitable real-time SLAM systems for indoor scenes.
+
+The third objective is "Implementation on the one of the state-of-the-art methods and analysis on the performance".
+
+In chapter \ref{cha:result} the original results of BAD-SLAM are obtained and be compared with other proposed methods. 
+
+The fourth objective is "Investigating potential optimization methods to simplify the implementation and improve the performance."
+
+This is the core work of this project, the improvement of an existing SLAM system, BAD-SLAM \parencite{8954208}, is described in chapter \ref{cha:impl}. There are three main improvements, the bilateral filter, a new keyframe selection method and the robust kernel function.
+
+The fifth objective is "Preparing the datasets and preparing for experiments".
+
+The datasets used in this project is introduced in section \ref{sec:Test_Datasets}. The required environment of this project is described in section \ref{sec:Test_Environment}.
+
+The sixth objective is "System development, implementation and evaluation".
+
+The development and implementation of each step of the proposed SLAM system are introduced in chapter \ref{cha:impl}. The results and evaluation of each step of the proposed SLAM system are described in section \ref{sec:Final Version Comparison}.
+
+The final objective is "Analyzing the results and comparing them, writing the dissertation".
+
+The results and evaluation of the different methods and different parameters are described in chapter \ref{cha:result}.
+
+The aim of this project is to develop a real-time \ac{SLAM} system for mobile devices, this real-time SLAM system is improved from an existing the state-of-the-art SLAM system, BAD-SLAM \parencite{8954208}, and it will balance the accuracy and speed. This \ac{SLAM} system is applied to Augmented or Virtual Reality (AR/VR) on mobile devices and Laptops.
+
+First, the accuracy of the system is improved via better parameters, the $sigma_1$ and $sigma_2$ in the bilateral filter, the $\mu_q$ in the keyframe selection method with mixed distance and the $c$ in Robust kernel function.
+
+Second, two better keyframe selection methods are tested, and the keyframe selection method with mixed distance improves the performance significantly. According to table \ref{ATE_RMSE_Distribution}, the mean ATE RMSE has been improved from 7.91cm to 1.01cm.
+
+Third, the time consumption of the proposed system is 23\% larger than the original system, and the VRAM consumption of the proposed system is 19\% larger than original system, which is still acceptable for mobile devices. In contrast to the original system with 6 frames interval keyframe selection method, the proposed system has a better performance but 46\% less time consumption, according to table \ref{Resource_Consumption_Time}.
+
+So the problem, to balance the accuracy and the speed for mobile devices, is solved by the approach of the keyframe selection method with mixed distance and better parameters.
+
+\section{Future Work}
+\label{sec:Further_Work}
+
+In recent years, \ac{AI}, especially the deep learning technology, as a sharp sword, has been widely used in computer vision.
+
+The combination of deep learning and \ac{SLAM} algorithms is a popular research direction in recent years. The specific research direction is divided into five parts, as follows:
+\begin{itemize}
+    \item Features extraction and matching.
+    \item Extract features at higher levels such as Semantic level. 
+    \item Depth estimation. 
+    \item Pose estimation.
+    \item Image semantic segmentation  and semantic map construction.
+\end{itemize}
+
+CNN-SLAM \parencite{8100178} proposed a method where CNN-predicted dense depth maps are naturally fused together with depth measurements obtained from direct monocular SLAM. its scheme privileges depth prediction in image locations where monocular SLAM approaches tend to fail. CNN-SLAM also proposed a framework to efficiently fuse semantic labels, obtained from a single frame, with dense SLAM, yielding semantically coherent scene reconstruction from a single view. The idea of CNN-SLAM can be also used in this project to yield the semantic labels for the established map.
+
+VINet \parencite{article:AINet} presented an on-manifold sequence-tosequence learning approach to motion estimation using visual and inertial sensors. It is  the first end-to-end trainable method for visual-inertial odometry which performs a fusion of the data at an intermediate feature-representation level. Some mobile devices have been equipped with AI chips such as Apple A12 Bionic, Huawei Kirin 990 and Intel i7-1185G7. All these processors can be used to speed up this end-to-end trainable method for visual-inertial odometry.
+
+There is another direction with a strong application background: visual-inertial navigation fusion SLAM algorithms. Whether actual robots or hardware devices, they usually do not carry only one sensor, but are often a fusion of multiple sensors.
+
+\ac{IMU} can measure the angular velocity and acceleration of the sensor body, which is considered to have obvious complementarity with the camera sensor, and has the potential to obtain a more complete SLAM system after fusion. The reasons are as follow:
+\begin{itemize}
+    \item Although the IMU can measure the angular velocity and acceleration, there is a significant drift in these quantities. However, for fast movements in a short period of time, IMU can provide some better estimates. This is precisely the weakness of the camera. When the movement is too fast, the camera (rolling shutter) will have motion blur, or the overlap area between the two frames is too small for feature matching, so pure visual SLAM is very afraid of fast movement. With IMU, even during the period when the camera data is invalid, we can maintain a good pose estimation, which is impossible for pure visual SLAM.
+    \item When the image changes, we essentially cannot know whether the camera itself has moved or the external conditions have changed, so pure visual SLAM is difficult to deal with dynamic obstacles. The IMU can feel its own motion information, to some extent reduce the impact of dynamic objects.
+    \item IMU sensors are widely used in mobile devices, especially in the smartphones. 
+\end{itemize}
+
+To summarize, there are still some resources in mobile devices that have not been used sufficiently. The accuracy and speed of real-time SLAM systems can be improved via these hardware and algorithms in future.

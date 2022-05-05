@@ -1,0 +1,128 @@
+% Enable optimal configuration for use of the English language
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenx}
+
+% Set page dimensions
+\usepackage[
+  a4paper,
+  %width=150mm,
+  lmargin=1.5in,
+  top=1in,
+  bottom=1in
+]{geometry}
+
+% Format paragraphs
+\usepackage{parskip}
+\usepackage{setspace}
+\onehalfspacing{}
+
+% Rename contents
+\renewcommand*\contentsname{Table of Contents}
+
+% Set up an Harvard-styled reference section and give bibliography source
+\usepackage{csquotes}
+\usepackage[english]{babel}
+\usepackage[
+   %backend=biber,
+   style=ieee,
+%  citestyle=authoryear,
+   %sorting=none,
+%  firstinits=true,
+%  uniquename=init,
+   %urldate=short,
+]{biblatex}
+\addbibresource{references.bib}
+
+% Enable and configure hyperlinks
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,
+  linkcolor=black,
+  citecolor=green,
+  filecolor=black,
+  urlcolor=blue,
+  pdftitle={Final Year Project Dissertation},
+  pdfstartview={FitV}
+}
+\usepackage[hypcap]{caption} % Show top of figure when selecting link, rather than caption
+
+% Enable images
+\usepackage{graphicx}
+\graphicspath{{images/},{figures/}}
+
+% Format titles
+\usepackage{titlesec}
+%\titleformat{\chapter}{\Large\bfseries\usefont{OT1}{phv}{b}{n}\color{black}}{\llap{\thechapter\quad}}{0em}{}
+%\titleformat{\section}{\large\bfseries\usefont{OT1}{phv}{b}{n}\color{black}}{\llap{\thesection\quad}}{0em}{}
+%\titleformat{\subsection}{\large\bfseries\usefont{OT1}{phv}{b}{n}\color{black}}{\llap{\thesubsection\quad}}{0em}{}
+%\titleformat{\subsubsection}{\bfseries\usefont{OT1}{phv}{b}{n}\color{black}}{\llap{\thesubsubsection\quad}}{0em}{}
+%\titlespacing*{\chapter}{0pt}{-30pt}{40pt}
+\titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{0pt}{40pt}
+
+% Use custom headers and footers
+\usepackage{fancyhdr}
+\fancypagestyle{plain}{%
+  \fancyhf{}
+  \fancyhead[L]{\rule[-2ex]{0pt}{2ex}\small \Title}
+  \fancyfoot[R]{\thepage}
+  % \fancyfoot[L]{Student Name: \StudentId}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+  \setlength{\headheight}{20pt}
+}
+\pagestyle{fancy}
+  \fancyhf{}
+\fancyhead[L]{\rule[-2ex]{0pt}{2ex}\small \Title}
+\fancyfoot[R]{\thepage}
+\fancyfoot[L]{Student Name: \StudentId}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\setlength{\headheight}{20pt}
+
+% Calculate word count
+\immediate\write18{texcount -1 -sum chapters/chapter[[:digit:]].tex > wordcount.sum}
+\newcommand{\wordcount}{\input{wordcount.sum}}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.97,0.97,0.97}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+% Hurenkinder und Schusterjungen verhindern
+\clubpenalty = 10000
+\widowpenalty = 10000
+\displaywidowpenalty=10000
+
+\lstset{style=mystyle}
+
+\usepackage[printonlyused]{acronym}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage[bottom]{footmisc} % force footnote to bottom
+\usepackage{booktabs}
+\usepackage{makecell}
+
+\usepackage{adjustbox}

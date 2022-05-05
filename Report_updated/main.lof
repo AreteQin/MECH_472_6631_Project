@@ -1,0 +1,56 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {english}{}
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Overview of the project}}{1}{figure.caption.7}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.2}{\ignorespaces vehicle model}}{2}{figure.caption.8}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.3}{\ignorespaces wheel model}}{2}{figure.caption.9}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.4}{\ignorespaces the flowchart of the whole system}}{3}{figure.caption.10}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Image processing flowchart}}{5}{figure.caption.13}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Different thresholds in binarization}}{5}{figure.caption.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Identifying flowchart}}{6}{figure.caption.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Locating all objects}}{7}{figure.caption.17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Locating all objects}}{7}{figure.caption.18}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.1}{\ignorespaces How to find the path point}}{8}{figure.caption.19}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces How to find the path point}}{9}{figure.caption.20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces coordinate transformation}}{10}{figure.caption.21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.4}{\ignorespaces how to get path point and renew current position}}{11}{figure.caption.22}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces implement of ASIA Using four sub functions}}{11}{figure.caption.23}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Call the path planning algorithm}}{12}{figure.caption.24}%
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.1}{\ignorespaces hiding strategy}}{14}{figure.caption.25}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.2}{\ignorespaces an tactics for hiding strategy}}{15}{figure.caption.26}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.3}{\ignorespaces he foot of perpendicular from current position to the straight-line connecting enemy and obstacles}}{16}{figure.caption.27}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.4}{\ignorespaces The foot of perpendicular}}{17}{figure.caption.28}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.5}{\ignorespaces The importance of self-robot direction\relax }}{17}{figure.caption.29}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.6}{\ignorespaces The representation of theta}}{18}{figure.caption.30}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {5.7}{\ignorespaces attacking method}}{19}{figure.caption.31}%

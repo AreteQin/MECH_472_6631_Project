@@ -532,7 +532,7 @@ void laser_track(double x, double y, double theta, double enemy_x, double enemy_
 
 }
 
-int free_path( std::vector<object> objects, double laser_x, double laser_y, double theta, double enemy_x, double enemy_y, double erear_x, double erear_y) {
+int free_path(image rgb, std::vector<object> objects, double laser_x, double laser_y, double theta, double enemy_x, double enemy_y, double erear_x, double erear_y) {
 
 	int x_path, y_path, path_free = 1;
 	double r, phi, d_front, d_rear;
@@ -559,6 +559,8 @@ int free_path( std::vector<object> objects, double laser_x, double laser_y, doub
 
 		x_path = (int)(laser_x + d * cos(phi));
 		y_path = (int)(laser_y + d * sin(phi));
+
+		draw_point_rgb(rgb, x_path, y_path, 255, 0, 0);
 
 		if (check_space(objects, x_path, y_path) == 0) {
 			//path crosses an obstacle
@@ -741,7 +743,7 @@ int main()
 		laser_x = self_position_x + 31 * cos(self_position_theta);
 		laser_y = self_position_y + 31 * sin(self_position_theta);
 		
-		//draw_point_rgb(rgb, laser_x, laser_y, 0, 255, 0);
+		draw_point_rgb(rgb, laser_x, laser_y, 0, 255, 0);
 
 
 		if (distance(self_position_x, self_position_y, self_rear.get_position_x(), self_rear.get_position_y()) < 100 ){
@@ -759,6 +761,11 @@ int main()
 		enemy_position_x = enemy.get_position_x();
 		enemy_position_y = enemy.get_position_y();
 		enemy_position_theta = enemy.get_theta();
+
+		draw_point_rgb(rgb, enemy_position_x, enemy_position_y, 0, 0, 255);
+		draw_point_rgb(rgb, enemy_rear.get_position_x(), enemy_rear.get_position_y(), 0, 0, 255);
+
+
 		// print the output
 		std::cout << "self_position: " << self_position_x << ", "
 			<< self_position_y << ", "
@@ -778,7 +785,7 @@ int main()
 		int B_Global_End[2] = { enemy_position_x, enemy_position_y };
 		int* OneView = new int[2];                                                         // initialize a dynamic Array
 		PathTrack(OneView, A_Global_Start, B_Global_End, 3.1415926 / 19, 30, objects);     // realize the one-step viewpoint path track
-		draw_point_rgb(rgb, OneView[0], OneView[1], 225, 0, 0);                            // draw the view point to track/draw the goal point
+		//draw_point_rgb(rgb, OneView[0], OneView[1], 225, 0, 0);                            // draw the view point to track/draw the goal point
 		////part 2.------------------Track object for Path planning-----------------END
 
 
@@ -802,19 +809,22 @@ int main()
 		x_rear = self_rear.get_position_x();
 		y_rear = self_rear.get_position_y();
 
-		if (check_space(objects, B_Global_End[0], B_Global_End[1])) {
-			purepursuit(B_Global_End[0], B_Global_End[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
+		/*if (check_space(objects, B_Global_End[0], B_Global_End[1])) {
+			purepursuit(OneView[0], OneView[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
 			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
 		}
 		else {
 			purepursuit(width / 2, height / 2, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
 			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
-		}
+		}*/
+		/////TESTING
+		purepursuit(x0, y0, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
+		inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
 
 		//Fire conditions
 		laser_track(laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y(), pw_laser, l_ang);
 		
-		if (free_path(objects, laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y())) {
+		if (free_path(rgb,objects, laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y())) {
 
 			std::cout << "PATH IS FREE!" << "\n";
 			if (abs(l_ang) < 0.1) {
