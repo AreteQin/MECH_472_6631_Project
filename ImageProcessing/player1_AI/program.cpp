@@ -545,17 +545,6 @@ int main()
 
 		// Image processing done ---------------------------------------------
 
-		// Hiding Strategy ---------------------------------------------------
-		// input: self state, enemy state, all obstacles
-		// output: expected state
-		double expected_x, expected_y, expected_theta;
-		calculate_expected_position(self_position_x, self_position_y, self_position_theta,
-			enemy_position_x, enemy_position_y, enemy_position_theta, objects,
-			expected_x, expected_y, expected_theta);
-		draw_point_rgb(rgb, expected_x, expected_y, 255, 0, 0);
-		// Hiding Strategy done ---------------------------------------------------
-
-
 		// NOTE: only one program can call view_image()
 		view_rgb_image(rgb);
 
