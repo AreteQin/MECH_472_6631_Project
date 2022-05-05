@@ -600,13 +600,12 @@ int main()
 	// number of obstacles
 	N_obs = 2;
 
-<<<<<<< HEAD
 	x_obs[1] = 270; // pixels
 	y_obs[1] = 240; // pixels
-=======
+
 	x_obs[1] = 280; // pixels
 	y_obs[1] = 200; // pixels
->>>>>>> a4b3722a9d7d1a1749ef93d7c874801fe82757f2
+
 	size_obs[1] = 1.0; // scale factor 1.0 = 100% (not implemented yet)	
 
 	x_obs[2] = 400; // pixels

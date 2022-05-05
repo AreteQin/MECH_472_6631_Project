@@ -302,18 +302,31 @@ bool get_robots(std::vector<object> objects, object& self, object& self_rear,
 	return true;
 }
 
+/// ---------------- Hiding Strategy Functions --------------------- ///
 // locate the hiding point according to the enemy position and 
 // the specific obstacle position
 bool calculate_hiding_point(double self_x, double self_y,
 	double enemy_x, double enemy_y,
 	double obstacle_x, double obstacle_y,
-	double &hiding_point_x, double &hiding_point_y) {
+	double& hiding_point_x, double& hiding_point_y) {
 	double dx = obstacle_x - enemy_x;
 	double dy = obstacle_y - enemy_y;
 	double k = ((self_x - obstacle_x) * dx + (self_y - obstacle_y) * dy)
 		/ ((dx * dx) + (dy * dy));
 	hiding_point_x = obstacle_x + k * dx;
 	hiding_point_y = obstacle_y + k * dy;
+	if (abs(hiding_point_x - enemy_x) < 150) {
+		hiding_point_x = obstacle_x - (enemy_x - obstacle_x);
+		hiding_point_y = obstacle_y - (enemy_y - obstacle_y);
+		//if (self_x > 320) {
+		//	hiding_point_x = obstacle_x - (enemy_x - obstacle_x);
+		//	hiding_point_y = obstacle_y - (enemy_y - obstacle_y);
+		//}
+		//else {
+		//	hiding_point_x = obstacle_x - (enemy_x - obstacle_x);
+		//	hiding_point_y = obstacle_y - (enemy_y - obstacle_y);
+		//}
+	}
 	return true;
 }
 
