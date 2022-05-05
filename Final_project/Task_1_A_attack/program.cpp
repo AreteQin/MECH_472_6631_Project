@@ -235,7 +235,7 @@ int get_positions_from_image(image rgb, int self_colour,
 		objects[i-1].identify_object(rgb, label_map, self_colour);
 		std::cout << "id: x,y,label: " << objects[i - 1].get_id() << ": " <<
 			ic[i] << " " << jc[i] << " " << objects[i - 1].get_label_value()<< std::endl;
-		draw_point_rgb(rgb, ic[i], jc[i], 0, 0, 255);
+		//draw_point_rgb(rgb, ic[i], jc[i], 0, 0, 255);
 	}
 
 	free_image(temp_image);
@@ -645,7 +645,7 @@ int main()
 	///////////////////// set robot initial position (pixels) and angle (rad)//////////////////////
 	 
 	x0 = 200;
-	y0 = 200;
+	y0 = 400;
 	theta0 = 0.5;
 	set_robot_position(x0, y0, theta0);
 
@@ -726,7 +726,7 @@ int main()
 
 		double self_position_x, self_position_y, self_position_theta,
 			enemy_position_x, enemy_position_y, enemy_position_theta,
-			laser_x, laser_y;
+			laser_x, laser_y,prev_theta;
 
 		self_position_x = self.get_position_x();
 		self_position_y = self.get_position_y();
@@ -736,14 +736,16 @@ int main()
 		
 		draw_point_rgb(rgb, laser_x, laser_y, 0, 255, 0);
 
+
 		if (distance(self_position_x, self_position_y, self_rear.get_position_x(), self_rear.get_position_y()) < 100 ){
 
 			self_position_theta = self.get_theta();
+			prev_theta = self.get_theta();
 
 		}
 		else
 		{
-			self_position_theta = self_position_theta;
+			self_position_theta = prev_theta;
 		}
 			
 	
@@ -768,8 +770,8 @@ int main()
 		int A_Global_Start[2] = { self_position_x, self_position_y };                      //initiallze a dynamic input parameter
 		int B_Global_End[2] = { enemy_position_x, enemy_position_y };
 		int* OneView = new int[2];                                                         // initialize a dynamic Array
-		PathTrack(OneView, A_Global_Start, B_Global_End, 3.1415926 / 19, 20, objects);     // realize the one-step viewpoint path track
-		//draw_point_rgb(rgb, OneView[0], OneView[1], 225, 0, 0);                            // draw the view point to track/draw the goal point
+		PathTrack(OneView, A_Global_Start, B_Global_End, 3.1415926 / 19, 30, objects);     // realize the one-step viewpoint path track
+		draw_point_rgb(rgb, OneView[0], OneView[1], 225, 0, 0);                            // draw the view point to track/draw the goal point
 		////part 2.------------------Track object for Path planning-----------------END
 
 
@@ -793,7 +795,8 @@ int main()
 		x_rear = self_rear.get_position_x();
 		y_rear = self_rear.get_position_y();
 
-		purepursuit(B_Global_End[0], B_Global_End[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
+		purepursuit(OneView[0], OneView[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
+		//purepursuit(x0, y0, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
 		inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
 
 		//Fire conditions
@@ -813,33 +816,6 @@ int main()
 			std::cout << "PATH IS NOT FREE! " << "\n";
 		}
 
-		
-		/*int  ig, jg;
-		double phi,d_front,d_rear,r;
-
-		d_front = distance(laser_x, laser_y, enemy_position_x, enemy_position_y);
-		d_rear = distance(laser_x, laser_y, enemy_rear.get_position_x(), enemy_rear.get_position_y());
-
-		if (d_front < d_rear) {
-
-			phi = atan2(enemy_position_y - laser_y, enemy_position_x - laser_x);
-			r = d_front;
-		}
-		else
-		{
-			phi = atan2(enemy_rear.get_position_y() - laser_y, enemy_rear.get_position_x() - laser_x);
-			r = d_rear;
-		}
-		
-
-		for (int d = 0; d < r; d++) {
-
-			ig = (int)(laser_x + d * cos(phi));
-			jg = (int)(laser_y + d * sin(phi));
-			
-			draw_point_rgb(rgb, ig, jg, 255, 0, 0);
-		}*/
-
 
 		set_inputs(pw_l, pw_r, pw_laser, laser,
 			light, light_gradient, light_dir, image_noise,
@@ -855,14 +831,18 @@ int main()
 		std::cout << "laser error is: " << l_ang << "\n";
 		
 
-
+		//robot state
 		fout << tc << "," << self_position_theta << "," << self_position_x << "," << self_position_y << ",";
-		fout << pw_r << "," << pw_l << "," << vr << "," << vl << "," << v_cmd << "," << w_cmd << "," << e_p << "," << e_ang;
+		//controller parameters
+		fout << pw_r << "," << pw_l << "," << vr << "," << vl << "," << v_cmd << "," << w_cmd << "," << e_p << "," << e_ang << "," << l_ang << ",";
+		//enemy state
+		fout << enemy_position_theta << "," << enemy_position_x << "," << enemy_position_y;
+
 		fout << "\n";
 
 		// NOTE: only one program can call view_image()
 		view_rgb_image(rgb);
-
+		delete[] OneView;
 		// don't need to simulate too fast
 		Sleep(10); // 100 fps max
 	}

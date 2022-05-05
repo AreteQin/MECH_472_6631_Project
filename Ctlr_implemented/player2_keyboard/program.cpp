@@ -108,8 +108,8 @@ int main()
 	set_simulation_mode(mode,level);	
 	
 	// set robot initial position (pixels) and angle (rad)
-	x0 = 450;    
-	y0 = 320;
+	x0 = 500;    
+	y0 = 320 ;
 	theta0 = 1.5;
 
 	set_robot_position(x0,y0,theta0);
