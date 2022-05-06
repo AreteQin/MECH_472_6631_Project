@@ -75,11 +75,10 @@ void purepursuit(double xref, double yref, double x, double y, double theta, dou
 
 	std::cout << "Position error is: " << e_p << "\n";
 	std::cout << "Angle error is: " << e_ang << "\n";
-	std::cout << "d is: " << avoid_edges(x, y, x_rear, y_rear) << "\n";
+	//std::cout << "d is: " << avoid_edges(x, y, x_rear, y_rear) << "\n";
 
-	//change hierarchy of if conditions
 
-	if (abs(e_p) > 0.1) {
+	if (abs(e_p) > 1) {
 		
 		if (abs(e_ang) > 3.14159 / 2) {
 
@@ -89,7 +88,7 @@ void purepursuit(double xref, double yref, double x, double y, double theta, dou
 		}
 		// Check if robot is near edges
 		
-		else if (avoid_edges(x, y, x_rear, y_rear) > 0 )
+	/*	else if (avoid_edges(x, y, x_rear, y_rear) > 0 )
 		{
 
 			if (abs(e_ang) > 0.4) {
@@ -103,7 +102,7 @@ void purepursuit(double xref, double yref, double x, double y, double theta, dou
 
 			}
 
-		}
+		}*/
 		else {
 			if (e_ang < 0.1) {
 

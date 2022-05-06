@@ -499,37 +499,56 @@ void PathTrack(int OneViewPoint[2], int A_Global_Start[2], int B_Global_End[2], 
 
 const double pi = 3.14159265358979323846;
 
-void laser_track(double x, double y, double theta, double enemy_x, double enemy_y, double erear_x, double erear_y, int& pw_laser, double& e_ang) {
+void laser_track(double x, double y, double theta, double enemy_x, double enemy_y, double erear_x, double erear_y, int& pw_laser, double& e_ang, double& alpha) {
 
-	double dc, dr, alpha;
+	double dc, dr, gamma;
 
 	dc = distance(x, y, enemy_x, enemy_y);
 	dr = distance(x, y, erear_x, erear_y);
 
-	if (pw_laser <= 1500) {
+	alpha = ((double)pw_laser - 1000) / 1000 * pi;
 
-		alpha = theta - (1500 - (double)pw_laser) / 1000 * pi;
+	if (dc <= dr) {
+		
+		gamma = atan2(enemy_y - y, enemy_x - x);
+
+		if (pw_laser <= 1500) {
+
+			//alpha = ((double)pw_laser - 1000) / 1000 * pi;
+			e_ang = pi / 2 - alpha + (gamma - theta);
+			pw_laser += (int)(e_ang / pi * 1000);
+
+		}
+		else if (pw_laser > 1500) {
+
+			//alpha = (2000 - (double)pw_laser) / 1000 * pi;
+			e_ang = alpha - pi / 2 - (gamma - theta);
+			pw_laser += (int)(e_ang / pi * 1000);
+
+		}
+
 	}
-	else {
-
-		alpha = theta + ((double)pw_laser - 1500) / 1000 * pi;
-	}
-
-
-	if (dc < dr) {
-
-		e_ang = (atan2(enemy_y - y, enemy_x - x) - alpha);
-
-	}
-	else
+	else if (dc > dr)
 	{
-		e_ang = (atan2(erear_y - y, erear_x - x) - alpha);
+		gamma = atan2(erear_y - y, erear_x - x);
+
+		if (pw_laser <= 1500) {
+
+			//alpha = ((double)pw_laser - 1000) / 1000 * pi;
+			e_ang = pi / 2 - alpha + (gamma - theta);
+			pw_laser += (int)(e_ang / pi * 1000);
+
+		}
+		else if (pw_laser > 1500) {
+
+			//alpha = (2000 - (double)pw_laser) / 1000 * pi;
+			e_ang = alpha - pi / 2 - (gamma - theta);
+			pw_laser += (int)(e_ang / pi * 1000);
+
+		}
+
 	}
-
-
-	pw_laser = pw_laser + (int)(e_ang) / pi * 1000;
-
-
+	
 }
 
 int free_path(image rgb, std::vector<object> objects, double laser_x, double laser_y, double theta, double enemy_x, double enemy_y, double erear_x, double erear_y) {
@@ -550,9 +569,6 @@ int free_path(image rgb, std::vector<object> objects, double laser_x, double las
 		phi = atan2(erear_y - laser_y, erear_x - laser_x);
 		r = d_rear;
 	}
-
-	/*phi = atan2(enemy_y - laser_y, enemy_x - laser_x);
-	r = distance(laser_x, laser_y, enemy_x, enemy_y);*/
 
 
 	for (int d = 0; d < r; d++) {
@@ -602,11 +618,11 @@ int main()
 	// number of obstacles
 	N_obs = 2;
 
-	x_obs[1] = 270; // pixels
-	y_obs[1] = 240; // pixels
-
-	x_obs[1] = 280; // pixels
+	x_obs[1] = 220; // pixels
 	y_obs[1] = 200; // pixels
+
+	x_obs[1] = 260; // pixels
+	y_obs[1] = 250; // pixels
 
 	size_obs[1] = 1.0; // scale factor 1.0 = 100% (not implemented yet)	
 
@@ -653,9 +669,9 @@ int main()
 
 	///////////////////// set robot initial position (pixels) and angle (rad)//////////////////////
 	 
-	x0 = 200;
-	y0 = 400;
-	theta0 = 0.5;
+	x0 = 150;
+	y0 = 110;
+	theta0 = 1;
 	set_robot_position(x0, y0, theta0);
 
 	// set initial inputs / on-line adjustable parameters /////////
@@ -740,24 +756,14 @@ int main()
 		self_position_x = self.get_position_x();
 		self_position_y = self.get_position_y();
 
+		draw_point_rgb(rgb, self_position_x, self_position_y, 0, 0, 255);
+		draw_point_rgb(rgb, self_rear.get_position_x(), self_rear.get_position_y(), 0, 0, 255);
+
 		laser_x = self_position_x + 31 * cos(self_position_theta);
 		laser_y = self_position_y + 31 * sin(self_position_theta);
 		
-		draw_point_rgb(rgb, laser_x, laser_y, 0, 255, 0);
+		//draw_point_rgb(rgb, laser_x, laser_y, 0, 255, 0);
 
-
-		if (distance(self_position_x, self_position_y, self_rear.get_position_x(), self_rear.get_position_y()) < 100 ){
-
-			self_position_theta = self.get_theta();
-			prev_theta = self.get_theta();
-
-		}
-		else
-		{
-			self_position_theta = prev_theta;
-		}
-			
-	
 		enemy_position_x = enemy.get_position_x();
 		enemy_position_y = enemy.get_position_y();
 		enemy_position_theta = enemy.get_theta();
@@ -769,13 +775,28 @@ int main()
 		// print the output
 		std::cout << "self_position: " << self_position_x << ", "
 			<< self_position_y << ", "
-			<< self_position_theta 
+			<< self_position_theta
 			<< ", " << std::endl;
 		std::cout << "enemy_position: " << enemy_position_x << ", "
 			<< enemy_position_y << ", "
-			<< enemy_position_theta 
+			<< enemy_position_theta
 			<< ", " << std::endl;
 
+		double self_centroids, enemy_centroids;
+
+		self_centroids = distance(self_position_x, self_position_y, self_rear.get_position_x(), self_rear.get_position_y());
+		enemy_centroids = distance(enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y());
+
+		if (self_centroids < 100 ){
+
+			self_position_theta = self.get_theta();
+			prev_theta = self.get_theta();
+
+		}
+		else
+		{
+			self_position_theta = prev_theta;
+		}
 		
 
 		/// Part 2.---------------------Track object for Path planning----------------------Start
@@ -804,55 +825,69 @@ int main()
 		///////////////////////Controlling/////////////////////////////////////////
 
 		double x_rear, y_rear;
-		double e_p, e_ang,l_ang;
+		double e_p, e_ang,l_ang,laser_alpha;
 
 		x_rear = self_rear.get_position_x();
 		y_rear = self_rear.get_position_y();
 
-		/*if (check_space(objects, B_Global_End[0], B_Global_End[1])) {
+		if (check_space(objects, B_Global_End[0], B_Global_End[1])) {
 			purepursuit(OneView[0], OneView[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
 			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
 		}
 		else {
 			purepursuit(width / 2, height / 2, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
 			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
-		}*/
+		}
 		/////TESTING
-		purepursuit(x0, y0, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
-		inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
+		/*purepursuit(x0, y0, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
+		inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);*/
 
 		//Fire conditions
-		laser_track(laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y(), pw_laser, l_ang);
+		laser_track(laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y(), pw_laser, l_ang, laser_alpha);
 		
-		if (free_path(rgb,objects, laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y())) {
+		if (pw_laser > 2000 || pw_laser < 0) {
 
-			std::cout << "PATH IS FREE!" << "\n";
-			if (abs(l_ang) < 0.1) {
-				laser = 1;
-				
-			}
-			
-		}
-		else
-		{
-			std::cout << "PATH IS NOT FREE! " << "\n";
+			pw_laser = 1500;
 		}
 
-
-		set_inputs(pw_l, pw_r, pw_laser, laser,
-			light, light_gradient, light_dir, image_noise,
-			max_speed, opponent_max_speed);
-
-		laser = 0;
 
 		/////////// Printing data /////////////////
 
 		std::cout << "time is: " << tc << "\n";
 		std::cout << "v_cmd is: " << v_cmd << "\n";
 		std::cout << "w_cmd is: " << w_cmd << "\n";
-		std::cout << "laser error is: " << l_ang << "\n";
-		
+		std::cout << "self centroids is: " << self_centroids << "\n";
+		std::cout << "enemy centroids is: " << enemy_centroids << "\n";
+		std::cout << "laser error is: " << l_ang * 180 / pi << "\n";
+		std::cout << "Alpha is: " << laser_alpha * 180 / pi << "\n";
+		std::cout << "pw_laser is: " << pw_laser << "\n";
+		std::cout << "laser is: " << laser << "\n";
 
+		if (free_path(rgb, objects, laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y())) {
+
+			std::cout << "PATH IS FREE!" << "\n";
+			if (abs(l_ang) < 0.1 && self_centroids < 90 && enemy_centroids < 90) {
+				laser = 1;
+				std::cout << "LASER ERROR IS SMALL" << "\n";
+				std::cout << "laser error is: " << l_ang << "\n";
+				set_inputs(pw_l, pw_r, pw_laser, laser,
+					light, light_gradient, light_dir, image_noise,
+					max_speed, opponent_max_speed);
+
+			}
+
+		}
+		else
+		{
+			std::cout << "PATH IS NOT FREE! " << "\n";
+		}
+
+		set_inputs(pw_l, pw_r, pw_laser, laser,
+			light, light_gradient, light_dir, image_noise,
+			max_speed, opponent_max_speed);
+
+		
+		std::cout << "\n";
 		//robot state
 		fout << tc << "," << self_position_theta << "," << self_position_x << "," << self_position_y << ",";
 		//controller parameters

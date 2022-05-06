@@ -11,26 +11,27 @@ C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_a
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(433,24): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(437,24): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(458,8): warning C4101: 'Sample_Theta_Global': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(530,22): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(746,32): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(746,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(765,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(765,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(766,77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(766,48): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(784,29): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(784,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(784,46): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(784,46): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(785,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(785,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(785,45): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(785,45): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(787,79): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(589,22): warning C4101: 'pw_laser_o': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(589,34): warning C4101: 'laser_o': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(589,6): warning C4101: 'pw_l_o': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(589,14): warning C4101: 'pw_r_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(759,40): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(759,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(760,75): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(760,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(771,41): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(771,23): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(772,77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(772,48): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(805,29): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(805,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(805,46): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(805,46): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(806,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(806,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(806,45): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(806,45): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(808,79): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(605,22): warning C4101: 'pw_laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(605,34): warning C4101: 'laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(605,6): warning C4101: 'pw_l_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(605,14): warning C4101: 'pw_r_o': unreferenced local variable
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(439): warning C4715: 'Get_Angle_Rotation': not all control paths return a value
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(743): warning C4700: uninitialized local variable 'self_position_theta' used
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\program.cpp(762): warning C4700: uninitialized local variable 'self_position_theta' used
   program.vcxproj -> C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_1_A_attack\Debug\program.exe
