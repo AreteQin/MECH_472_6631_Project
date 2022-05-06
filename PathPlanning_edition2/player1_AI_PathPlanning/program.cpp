@@ -663,7 +663,7 @@ int main()
 		/// Data    : 2022.04.10 
 		int A_Global_Start[2] = { self_position_x, self_position_y };                      //initiallze/renew (current/start point)
 		int B_Global_End[2] = { enemy_position_x, enemy_position_y };                      //initiallze/renew (expected/end point)
-		OneView = A_Global_Start;                                 //initiallze/renew (one-step viewpoint point)
+		OneView = A_Global_Start;                                                          //initiallze/renew (one-step viewpoint point)
 		PathTrack(OneView, A_Global_Start, B_Global_End, 3.1415926 / 19, 30, objects);     // realize the one-step viewpoint path track
 		draw_point_rgb(rgb, OneView[0], OneView[1], 225, 0, 0);                            // draw the one-step path point to track/draw the goal point
 		////part 2.------------------Track object for Path planning-----------------END
