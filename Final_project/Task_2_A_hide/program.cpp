@@ -616,8 +616,8 @@ int main()
 	set_simulation_mode(mode, level);
 
 	// set robot initial position (pixels) and angle (rad)
-	x0 = 200;
-	y0 = 200;
+	x0 = 500;
+	y0 = 110;
 	theta0 = 1.5;
 	set_robot_position(x0, y0, theta0);
 
@@ -773,9 +773,6 @@ int main()
 
 		double x_rear, y_rear, x_ref, y_ref;
 		double e_p, e_ang;
-
-		/*x_ref = 150;
-		y_ref = 400;*/
 
 		x_rear = self_rear.get_position_x();
 		y_rear = self_rear.get_position_y();

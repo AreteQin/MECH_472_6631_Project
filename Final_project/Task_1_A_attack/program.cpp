@@ -576,7 +576,7 @@ int free_path(image rgb, std::vector<object> objects, double laser_x, double las
 		x_path = (int)(laser_x + d * cos(phi));
 		y_path = (int)(laser_y + d * sin(phi));
 
-		draw_point_rgb(rgb, x_path, y_path, 255, 0, 0);
+		//draw_point_rgb(rgb, x_path, y_path, 255, 0, 0);
 
 		if (check_space(objects, x_path, y_path) == 0) {
 			//path crosses an obstacle
@@ -618,16 +618,12 @@ int main()
 	// number of obstacles
 	N_obs = 2;
 
-	x_obs[1] = 220; // pixels
-	y_obs[1] = 200; // pixels
-
-	x_obs[1] = 260; // pixels
-	y_obs[1] = 250; // pixels
-
+	x_obs[1] = 300; // pixels
+	y_obs[1] = 210; // pixels
 	size_obs[1] = 1.0; // scale factor 1.0 = 100% (not implemented yet)	
 
-	x_obs[2] = 400; // pixels
-	y_obs[2] = 300; // pixels
+	x_obs[2] = 340; // pixels
+	y_obs[2] = 280; // pixels
 	size_obs[2] = 1.0; // scale factor 1.0 = 100% (not implemented yet)	
 
 	// set robot model parameters ////////
@@ -669,9 +665,9 @@ int main()
 
 	///////////////////// set robot initial position (pixels) and angle (rad)//////////////////////
 	 
-	x0 = 150;
-	y0 = 110;
-	theta0 = 1;
+	x0 = 500;
+	y0 = 350;
+	theta0 = -1.5;
 	set_robot_position(x0, y0, theta0);
 
 	// set initial inputs / on-line adjustable parameters /////////
@@ -722,6 +718,9 @@ int main()
 	tc0 = high_resolution_time();
 	std::cout << "Start" << std::endl;
 
+	double laser_pre_error = 10000;
+	double theta_1 = 0;
+
 	while (1) {
 
 		// simulates the robots and acquires the image from simulation
@@ -752,12 +751,27 @@ int main()
 		double self_position_x, self_position_y, self_position_theta,
 			enemy_position_x, enemy_position_y, enemy_position_theta,
 			laser_x, laser_y,prev_theta;
+		double x_rear, y_rear;
+
 
 		self_position_x = self.get_position_x();
 		self_position_y = self.get_position_y();
+		self_position_theta = self.get_theta();
 
-		draw_point_rgb(rgb, self_position_x, self_position_y, 0, 0, 255);
-		draw_point_rgb(rgb, self_rear.get_position_x(), self_rear.get_position_y(), 0, 0, 255);
+		x_rear = self_rear.get_position_x();
+		y_rear = self_rear.get_position_y();
+
+		if (x_rear == 0 && y_rear == 0) {
+
+			self_position_theta = theta_1;
+		}
+		else
+		{
+			theta_1 = self_position_theta;
+		}
+
+		//draw_point_rgb(rgb, self_position_x, self_position_y, 0, 0, 255);
+		//draw_point_rgb(rgb, self_rear.get_position_x(), self_rear.get_position_y(), 0, 0, 255);
 
 		laser_x = self_position_x + 31 * cos(self_position_theta);
 		laser_y = self_position_y + 31 * sin(self_position_theta);
@@ -768,8 +782,8 @@ int main()
 		enemy_position_y = enemy.get_position_y();
 		enemy_position_theta = enemy.get_theta();
 
-		draw_point_rgb(rgb, enemy_position_x, enemy_position_y, 0, 0, 255);
-		draw_point_rgb(rgb, enemy_rear.get_position_x(), enemy_rear.get_position_y(), 0, 0, 255);
+		//draw_point_rgb(rgb, enemy_position_x, enemy_position_y, 0, 0, 255);
+		//draw_point_rgb(rgb, enemy_rear.get_position_x(), enemy_rear.get_position_y(), 0, 0, 255);
 
 
 		// print the output
@@ -786,17 +800,6 @@ int main()
 
 		self_centroids = distance(self_position_x, self_position_y, self_rear.get_position_x(), self_rear.get_position_y());
 		enemy_centroids = distance(enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y());
-
-		if (self_centroids < 100 ){
-
-			self_position_theta = self.get_theta();
-			prev_theta = self.get_theta();
-
-		}
-		else
-		{
-			self_position_theta = prev_theta;
-		}
 		
 
 		/// Part 2.---------------------Track object for Path planning----------------------Start
@@ -807,66 +810,61 @@ int main()
 		int* OneView = new int[2];                                                         // initialize a dynamic Array
 		PathTrack(OneView, A_Global_Start, B_Global_End, 3.1415926 / 19, 30, objects);     // realize the one-step viewpoint path track
 		//draw_point_rgb(rgb, OneView[0], OneView[1], 225, 0, 0);                            // draw the view point to track/draw the goal point
+
 		////part 2.------------------Track object for Path planning-----------------END
 
 
 		// Image processing done ---------------------------------------------
 
-		// Hiding Strategy ---------------------------------------------------
-		// input: self state, enemy state, all obstacles
-		// output: expected state
-		/*double expected_x, expected_y, expected_theta;
-		calculate_expected_position(self_position_x, self_position_y, self_position_theta,
-			enemy_position_x, enemy_position_y, enemy_position_theta, objects,
-			expected_x, expected_y, expected_theta);
-		draw_point_rgb(rgb, expected_x, expected_y, 255, 0, 0);*/
-		// Hiding Strategy done ---------------------------------------------------
-
 		///////////////////////Controlling/////////////////////////////////////////
+		
+		double l_ang,laser_alpha;
 
-		double x_rear, y_rear;
-		double e_p, e_ang,l_ang,laser_alpha;
-
-		x_rear = self_rear.get_position_x();
-		y_rear = self_rear.get_position_y();
-
+		//Check for obstacles
 		if (check_space(objects, B_Global_End[0], B_Global_End[1])) {
-			purepursuit(OneView[0], OneView[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
+			purepursuit(OneView[0], OneView[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl);
 			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
 		}
-		else {
-			purepursuit(width / 2, height / 2, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
-			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
-		}
-		/////TESTING
-		/*purepursuit(x0, y0, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
-		inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);*/
 
-		//Fire conditions
+		else {
+			pw_r = 1000;
+			pw_l = 2000;
+			std::cout << "Using 100 100";
+		}
+		
+		//Laser servo tracking enemy function
 		laser_track(laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y(), pw_laser, l_ang, laser_alpha);
 		
-		if (pw_laser > 2000 || pw_laser < 0) {
+		//Checking for saturation values
+		if (pw_laser > 2000 || pw_laser < 1000) {
 
 			pw_laser = 1500;
 		}
-
 
 		/////////// Printing data /////////////////
 
 		std::cout << "time is: " << tc << "\n";
 		std::cout << "v_cmd is: " << v_cmd << "\n";
 		std::cout << "w_cmd is: " << w_cmd << "\n";
-		std::cout << "self centroids is: " << self_centroids << "\n";
-		std::cout << "enemy centroids is: " << enemy_centroids << "\n";
+		//std::cout << "self centroids is: " << self_centroids << "\n";
+		//std::cout << "self_rear x is: " << x_rear << "\n";
+		//std::cout << "self_rear y is: " << y_rear << "\n";
+		//std::cout << "enemy centroids is: " << enemy_centroids << "\n";
 		std::cout << "laser error is: " << l_ang * 180 / pi << "\n";
 		std::cout << "Alpha is: " << laser_alpha * 180 / pi << "\n";
 		std::cout << "pw_laser is: " << pw_laser << "\n";
 		std::cout << "laser is: " << laser << "\n";
+		
+		double phi;
+
+		phi = atan2(laser_y - self_position_y, laser_x - self_position_x);
 
 		if (free_path(rgb, objects, laser_x, laser_y, self_position_theta, enemy_position_x, enemy_position_y, enemy_rear.get_position_x(), enemy_rear.get_position_y())) {
 
 			std::cout << "PATH IS FREE!" << "\n";
-			if (abs(l_ang) < 0.1 && self_centroids < 90 && enemy_centroids < 90) {
+
+			if (abs(l_ang) < 0.1 && abs(laser_pre_error) < 0.1 && self_centroids < 90 && enemy_centroids < 90 && abs(phi - self_position_theta) < 0.01 && x_rear != 0) {
+				
 				laser = 1;
 				std::cout << "LASER ERROR IS SMALL" << "\n";
 				std::cout << "laser error is: " << l_ang << "\n";
@@ -886,12 +884,13 @@ int main()
 			light, light_gradient, light_dir, image_noise,
 			max_speed, opponent_max_speed);
 
+		laser_pre_error = l_ang;
 		
 		std::cout << "\n";
 		//robot state
 		fout << tc << "," << self_position_theta << "," << self_position_x << "," << self_position_y << ",";
 		//controller parameters
-		fout << pw_r << "," << pw_l << "," << vr << "," << vl << "," << v_cmd << "," << w_cmd << "," << e_p << "," << e_ang << "," << l_ang << ",";
+		fout << pw_r << "," << pw_l << "," << vr << "," << vl << "," << v_cmd << "," << w_cmd << "," << l_ang << ",";
 		//enemy state
 		fout << enemy_position_theta << "," << enemy_position_x << "," << enemy_position_y;
 

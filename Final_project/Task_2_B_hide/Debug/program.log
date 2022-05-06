@@ -1,5 +1,4 @@
-﻿  object.cpp
-  program.cpp
+﻿  program.cpp
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(273,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(288,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(342,20): warning C4018: '<': signed/unsigned mismatch
@@ -10,35 +9,19 @@ C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_h
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(487,8): warning C4101: 'Sample_Theta_Global': unreferenced local variable
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(536,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(537,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(903,29): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(903,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(903,46): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(903,46): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(904,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(904,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(904,39): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(904,39): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(905,79): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(693,22): warning C4101: 'pw_laser_o': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(693,34): warning C4101: 'laser_o': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(693,6): warning C4101: 'pw_l_o': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(693,14): warning C4101: 'pw_r_o': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(910,33): warning C4101: 'y_ref': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(910,26): warning C4101: 'x_ref': unreferenced local variable
-  robot.cpp
-  shared_memory.cpp
-  timer.cpp
-  vision.cpp
-  vision_simulation.cpp
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\vision_simulation.cpp(270,18): warning C4101: 't_laser_o': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\vision_simulation.cpp(270,9): warning C4101: 't_laser': unreferenced local variable
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\vision_simulation.cpp(698,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\vision_simulation.cpp(699,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\vision_simulation.cpp(700,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\vision_simulation.cpp(514,12): warning C4101: 'k': unreferenced local variable
-  Generating Code...
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(929): warning C4700: uninitialized local variable 'vl' used
-C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(929): warning C4700: uninitialized local variable 'vr' used
-image_transfer.lib(image_transfer.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(image_transfer.obj)' or at 'C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\Debug\program.pdb'; linking object as if no debug info
-image_transfer.lib(Video_IO.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(Video_IO.obj)' or at 'C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\Debug\program.pdb'; linking object as if no debug info
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(906,29): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(906,29): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(906,46): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(906,46): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(907,27): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(907,27): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(907,39): warning C4838: conversion from 'double' to 'int' requires a narrowing conversion
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(907,39): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(908,79): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(700,22): warning C4101: 'pw_laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(700,34): warning C4101: 'laser_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(700,6): warning C4101: 'pw_l_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(700,14): warning C4101: 'pw_r_o': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(914,33): warning C4101: 'y_ref': unreferenced local variable
+C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\program.cpp(914,26): warning C4101: 'x_ref': unreferenced local variable
   program.vcxproj -> C:\Users\mario\Desktop\University\MECH 472\MECH_Project\Final_project\Task_2_B_hide\Debug\program.exe

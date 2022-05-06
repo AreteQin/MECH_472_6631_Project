@@ -605,10 +605,17 @@ int avoid_edges(double x, double y, double x_rear, double y_rear) {
 	return k;
 }
 
-void back_up(double& vr, double& vl) {
+void edge_avoidance(double x, double y, double theta, double& v_cmd, double& w_cmd, double vr, double vl) {
 
-	vr = -vr;
-	vl = -vl;
+	double e_ang, e_p, d = 1, kh = 4, kp = 2, kd = 0, ki = 0.005;
+
+
+	e_p = sqrt(pow(x - 320, 2) + pow(y - 240, 2)) - d;
+	e_ang = (atan2(320 - y, 240 - x) - theta);
+
+	v_cmd = pid(kp, kd, ki, e_p, vr, vl);
+	w_cmd = kh * e_ang;
+
 }
 
 void purepursuit(double xref, double yref, double x, double y, double theta, double x_rear,
@@ -630,7 +637,7 @@ void purepursuit(double xref, double yref, double x, double y, double theta, dou
 
 	//change hierarchy of if conditions
 
-	if (abs(e_p) > 0.1) {
+	if (abs(e_p) > 1) {
 
 		if (abs(e_ang) > 3.14159 / 2) {
 
@@ -640,21 +647,21 @@ void purepursuit(double xref, double yref, double x, double y, double theta, dou
 		}
 		// Check if robot is near edges
 
-		else if (avoid_edges(x, y, x_rear, y_rear) > 0)
-		{
+		//else if (avoid_edges(x, y, x_rear, y_rear) > 0)
+		//{
 
-			if (abs(e_ang) > 0.4) {
-				v_cmd = 0;
-				w_cmd = kh * e_ang;
+		//	if (abs(e_ang) > 0.4) {
+		//		v_cmd = 0;
+		//		w_cmd = kh * e_ang;
 
-			}
-			else {
-				v_cmd = pid(kp, kd, ki, e_p, vr, vl);
-				w_cmd = kh * e_ang;
+		//	}
+		//	else {
+		//		v_cmd = pid(kp, kd, ki, e_p, vr, vl);
+		//		w_cmd = kh * e_ang;
 
-			}
+		//	}
 
-		}
+		//}
 		else {
 			if (e_ang < 0.1) {
 
@@ -765,9 +772,9 @@ int main()
 	set_simulation_mode(mode, level);
 
 	// set robot initial position (pixels) and angle (rad)
-	x0 = 450;
-	y0 = 150;
-	theta0 = -1.71;
+	x0 = 350;
+	y0 = 400;
+	theta0 = -pi;
 
 	set_robot_position(x0, y0, theta0);
 
@@ -825,18 +832,6 @@ int main()
 
 		tc = high_resolution_time() - tc0;
 
-		// change the inputs to move the robot around
-		// or change some additional parameters (lighting, etc.)
-		// only the following inputs work so far
-		// pw_l -- pulse width of left servo (us) (from 1000 to 2000)
-		// pw_r -- pulse width of right servo (us) (from 1000 to 2000)
-		// pw_laser -- pulse width of laser servo (us) (from 1000 to 2000)
-		// -- 1000 -> -90 deg
-		// -- 1500 -> 0 deg
-		// -- 2000 -> 90 deg
-		// laser -- (0 - laser off, 1 - fire laser for 3 s)
-		// max_speed -- pixels/s for right and left wheels
-
 		//   Image processing --------------------------------------------------
 
 		// The colour of our own robot which should be known, 1 represents A
@@ -876,13 +871,6 @@ int main()
 			<< enemy_position_theta 
 			<< ", " << std::endl;
 
-		//draw_point_rgb(rgb, self_position_x, self_position_y, 0, 0, 255);
-		//draw_point_rgb(rgb, enemy_position_x, enemy_position_y, 0, 255, 0);
-
-		//std::cout << "is 100, 100 free? "
-			//<< check_space(objects, 320, 400) << std::endl;
-		//std::cout << "is 300, 200 free? "
-			//<< check_space(objects, 300, 200) << std::endl;
 
 		// Image processing done ---------------------------------------------
 
@@ -893,9 +881,12 @@ int main()
 		calculate_expected_position(self_position_x, self_position_y, self_position_theta,
 			enemy_position_x, enemy_position_y, enemy_position_theta, objects,
 			expected_x, expected_y, expected_theta);
-		//draw_point_rgb(rgb, expected_x, expected_y, 255, 0, 0);
+		
 		// Hiding Strategy done ---------------------------------------------------
-
+		if (distance(self_position_x, self_position_y, expected_x, expected_y) < 20) {
+			view_rgb_image(rgb);
+			continue;
+		}
 		 //Path planning ---------------------------------------------------------
 		 //Part 2.---------------------Track object for Path planning----------------------Start
 		 //Author  : Xiaobo Wu 
@@ -903,31 +894,33 @@ int main()
 		int A_Global_Start[2] = { self_position_x, self_position_y };                      //initiallze a dynamic input parameter
 		int B_Global_End[2] = { expected_x, expected_y };
 		PathTrack(OneView, A_Global_Start, B_Global_End, 3.1415926 / 19, 40, objects);
-		//PathTrack(OneView, A_Global_Start, B_Global_End, 3.1415926 / 19, 20, objects);     // realize the one-step viewpoint path track
+		
 		// Path planning done -------------------------------------------------------
 
 		// Controller -----------------------------------------------------------
 		double x_rear, y_rear, x_ref, y_ref;
 		double e_p, e_ang, v_cmd, w_cmd, vr, vl;
 
-		/*x_ref = 150;
-		y_ref = 400;*/
 
 		x_rear = self_rear.get_position_x();
 		y_rear = self_rear.get_position_y();
 
 		std::cout << "OneView: " << OneView[0] << ", " << OneView[1] << std::endl;
-		//if (check_space(objects, OneView[0], OneView[1])) {
-		//if (check_space(objects, expected_x, expected_y)) {
-		//	purepursuit(expected_x, expected_y, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
-		//	inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
-		//}
-		//else {
-		//	purepursuit(width/2, height/2, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
-		//	inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
-		//}
-		purepursuit(OneView[0], OneView[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
-		inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
+		if (check_space(objects, OneView[0], OneView[1])) {
+		
+			purepursuit(OneView[0], OneView[1], self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
+			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
+		}
+		else if (avoid_edges(self_position_x, self_position_y, x_rear, y_rear) > 0)
+		{
+			edge_avoidance(self_position_x, self_position_y, self_position_theta, v_cmd, w_cmd, vr, vl);
+			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
+		}
+		else {
+			purepursuit(110, 590, self_position_x, self_position_y, self_position_theta, x_rear, y_rear, v_cmd, w_cmd, vr, vl, e_p, e_ang);
+			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
+		}
+		
 
 		// Controller done ---------------------------------------------------------
 

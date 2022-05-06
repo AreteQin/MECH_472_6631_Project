@@ -109,8 +109,8 @@ int main()
 	
 	// set robot initial position (pixels) and angle (rad)
 	x0 = 500;    
-	y0 = 400 ;
-	theta0 = 1.7;
+	y0 = 300;
+	theta0 = 1.5;
 
 	set_robot_position(x0,y0,theta0);
 	
