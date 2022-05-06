@@ -4,7 +4,6 @@
 #include <fstream>
 #include <vector>
 #include <Windows.h>
-
 #define KEY(c) ( GetAsyncKeyState((int)(c)) & (SHORT)0x8000 )
 
 #include "image_transfer.h"
@@ -382,25 +381,7 @@ float Get_Angle_Rotation(int Start[2], int Goal[2])
 // Output: the angle of from A to B (0 <= angle < 2 * 3.1415926)
 /////////////////////////////////////////////////////////////////////////////////////
 {
-	float Radian_Temple;
-	Radian_Temple = atan(abs((Goal[1] - Start[1]) / (Goal[0] - Start[0])));
-
-	if (((Goal[1] - Start[1]) > 0) && ((Goal[0] - Start[0]) > 0))
-	{
-		return Radian_Temple;
-	}
-	if (((Goal[1] - Start[1]) > 0) && ((Goal[0] - Start[0]) < 0))
-	{
-		return Radian_Temple + 3.1415926 / 2;
-	}
-	if (((Goal[1] - Start[1]) < 0) && ((Goal[0] - Start[0]) < 0))
-	{
-		return Radian_Temple + 3.1415926;
-	}
-	if (((Goal[1] - Start[1]) < 0) && ((Goal[0] - Start[0]) > 0))
-	{
-		return 2 * 3.1415926 - Radian_Temple;
-	};
+	return atan2((Goal[1] - Start[1]), (Goal[0] - Start[0]));
 }
 ////1.part-------The Funciton Defination for Path planning --------End
 void PathTrack(int OneViewPoint[2], int A_Global_Start[2], int B_Global_End[2], float Mini_Radian, float S_R, std::vector<object>& objects)
@@ -433,6 +414,14 @@ void PathTrack(int OneViewPoint[2], int A_Global_Start[2], int B_Global_End[2], 
 		// Transform body coordinate system to global coordinte system
 		Sample_Point_Global[0] = TF_X(Sample_Point_Body, A_Global_Start[0], Radian_Get);
 		Sample_Point_Global[1] = TF_Y(Sample_Point_Body, A_Global_Start[1], Radian_Get);
+		// if path point is near to expected point stop to find path point , will reduce the vibration of the trolley
+		if (sqrt((OneViewPoint[0] - B_Global_End[0])^2 + (OneViewPoint[1] - B_Global_End[1])^2) < S_R)
+		{
+		OneViewPoint[0] = B_Global_End[0];                           // update x label of start point 
+		OneViewPoint[1] = B_Global_End[1];  
+		break;
+		}
+		
 		if (check_space(objects, Sample_Point_Global[0], Sample_Point_Global[1]) == true)
 		{
 			/* be used to rebug , do not move it
@@ -457,7 +446,7 @@ void PathTrack(int OneViewPoint[2], int A_Global_Start[2], int B_Global_End[2], 
 		}
 		j = j + 2;
 	}
-
+	delete S;
 }
 
 int main()
@@ -596,8 +585,13 @@ int main()
 	// measure initial clock time
 	tc0 = high_resolution_time();
 	std::cout << "Start" << std::endl;
-
-
+	
+	// Part 2.---------------------Track object for Path planning----------------------Start
+	// Author  : Xiaobo Wu 
+	// Data    : 2022.05.06 
+	int* OneView = new int[2];                                                         // initialize a dynamic Array
+        // Part 2.---------------------Track object for Path planning----------------------End
+	
 	while (1) {
 		// simulates the robots and acquires the image from simulation
 		acquire_image_sim(rgb);
@@ -667,11 +661,11 @@ int main()
 		/// Part 2.---------------------Track object for Path planning----------------------Start
 		/// Author  : Xiaobo Wu 
 		/// Data    : 2022.04.10 
-		int A_Global_Start[2] = { self_position_x, self_position_y };                      //initiallze a dynamic input parameter
-		int B_Global_End[2] = { enemy_position_x, enemy_position_y };
-		int* OneView = new int[2];                                                         // initialize a dynamic Array
-		PathTrack(OneView, A_Global_Start, B_Global_End, 3.1415926 / 19, 20, objects);     // realize the one-step viewpoint path track
-		draw_point_rgb(rgb, OneView[0], OneView[1], 225, 0, 0);                            // draw the view point to track/draw the goal point
+		int A_Global_Start[2] = { self_position_x, self_position_y };                      //initiallze/renew (current/start point)
+		int B_Global_End[2] = { enemy_position_x, enemy_position_y };                      //initiallze/renew (expected/end point)
+		OneView = A_Global_Start;                                                          //initiallze/renew (one-step viewpoint point)
+		PathTrack(OneView, A_Global_Start, B_Global_End, 3.1415926 / 19, 30, objects);     // realize the one-step viewpoint path track
+		draw_point_rgb(rgb, OneView[0], OneView[1], 225, 0, 0);                            // draw the one-step path point to track/draw the goal point
 		////part 2.------------------Track object for Path planning-----------------END
 
 
@@ -682,8 +676,8 @@ int main()
 		view_rgb_image(rgb);
 
 		// don't need to simulate too fast
-		Sleep(100); // 100 fps max
-		delete OneView;
+		Sleep(10); // 100 fps max
+		
 	}
 
 	// free the image memory before the program completes
@@ -691,6 +685,12 @@ int main()
 	deactivate_vision();
 	deactivate_simulation();
 	std::cout << "\ndone.\n";
+	// Part 2.---------------------Track object for Path planning----------------------Start
+	// Author  : Xiaobo Wu 
+	// Data    : 2022.05.06 
+	delete OneView;                                                     // delete the dynamic Array
+        // Part 2.---------------------Track object for Path planning----------------------End
+	
 
 	return 0;
 }
