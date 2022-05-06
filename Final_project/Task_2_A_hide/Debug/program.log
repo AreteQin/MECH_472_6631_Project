@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-﻿  program.cpp
+﻿  object.cpp
+  program.cpp
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(272,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(287,20): warning C4018: '<': signed/unsigned mismatch
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(342,20): warning C4018: '<': signed/unsigned mismatch
@@ -31,12 +31,24 @@ C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 M
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(818,10): warning C4101: 'G': unreferenced local variable
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(774,33): warning C4101: 'y_ref': unreferenced local variable
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(774,26): warning C4101: 'x_ref': unreferenced local variable
+  robot.cpp
+  shared_memory.cpp
+  timer.cpp
+  utilities.cpp
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\utilities.cpp(13,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\utilities.cpp(14,14): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  vision.cpp
+  vision_simulation.cpp
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\vision_simulation.cpp(270,18): warning C4101: 't_laser_o': unreferenced local variable
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\vision_simulation.cpp(270,9): warning C4101: 't_laser': unreferenced local variable
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\vision_simulation.cpp(698,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\vision_simulation.cpp(699,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\vision_simulation.cpp(700,11): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\vision_simulation.cpp(514,12): warning C4101: 'k': unreferenced local variable
+  Generating Code...
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(708): warning C4700: uninitialized local variable 'self_position_theta' used
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(824): warning C4700: uninitialized local variable 'phi' used
 C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\program.cpp(825): warning C4700: uninitialized local variable 'r' used
 image_transfer.lib(image_transfer.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(image_transfer.obj)' or at 'C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\Debug\program.pdb'; linking object as if no debug info
 image_transfer.lib(Video_IO.obj) : warning LNK4099: PDB 'program.pdb' was not found with 'image_transfer.lib(Video_IO.obj)' or at 'C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\Debug\program.pdb'; linking object as if no debug info
   program.vcxproj -> C:\Users\qinqi\OneDrive - Concordia University - Canada\Concordia\Courses\6631 Mechatronics and Automation\MECH_472_6631_Project\Final_project\Task_2_A_hide\Debug\program.exe
-=======
-﻿  program.vcxproj -> C:\Users\Cooper\OneDrive - Concordia University - Canada\Course\6631\6631_project\Control_Implemented\Ctlr_implemented_V1_Doesnotwork\player1_Im\Debug\program.exe
->>>>>>> a6a96371e006e1a2fdd71f3f9b90397a99d35ecc

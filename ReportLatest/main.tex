@@ -1,0 +1,45 @@
+\documentclass[12pt]{report}
+
+% Contains package imports and document configurations
+\input{config/core_preamble.tex}
+
+% Uncomment this to include code or text snippets - requires Pygments
+% \input{config/additional_preamble.tex}
+
+\begin{document}
+
+% Contains macro definitions
+\input{config/metadata.tex}
+
+% Title page
+\input{front_matter/title.tex}
+
+% Front matter
+% \input{front_matter/abstract.tex}
+%\input{front_matter/statement.tex}
+%\input{front_matter/acknowledgements.tex}
+\tableofcontents
+% \listoftables
+% \listoffigures
+% \lstlistoflistings
+% \input{front_matter/acronyms.tex}
+
+% Chapters
+\input{chapters/01_introduction.tex}
+\input{chapters/02_litrev.tex}
+\input{chapters/2.5_PathPlanning.tex}
+\input{chapters/03_methodology.tex}
+\input{chapters/04_Plan.tex}
+% \input{chapters/04_design.tex}
+% \input{chapters/05_result.tex}
+% \input{chapters/06_conclusions.tex}
+
+% Back matter
+\input{back_matter/references.tex}
+
+% Appendices
+\appendix
+%\input{appendices/personal_reflection.tex}
+%\input{appendices/figures.tex}
+
+\end{document}

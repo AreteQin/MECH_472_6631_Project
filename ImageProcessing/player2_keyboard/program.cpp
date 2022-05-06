@@ -168,7 +168,7 @@ int main()
 	int height, width;
 
 	// note that the vision simulation library currently
-	// assumes an image size of 640x480
+	// assumes an image size of 640x480.
 	width  = 640;
 	height = 480;
 

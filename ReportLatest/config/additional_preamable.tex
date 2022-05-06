@@ -1,0 +1,15 @@
+% Format source code listings
+\usepackage{minted}
+\providecommand*{\listingautorefname}{Snippet}
+\renewcommand\listingscaption{Snippet}
+\renewcommand\listoflistingscaption{List of Source Code and Text Snippets}
+\usemintedstyle{colorful}
+
+% Add language-specific code blocks
+% This is an example code block for C++
+\newminted{cpp}{
+  frame=leftline,
+  linenos=true,
+  samepage=true,
+  xleftmargin=28pt
+}
