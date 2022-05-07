@@ -1,0 +1,237 @@
+\chapter{Result and Analysis}
+\label{cha:result}
+
+\section{Datasets}
+\label{sec:Test_Datasets}
+In this chapter, the proposed method in previous chapter will be evaluated in a public benchmark dataset and compared to the existent state-of-the-art methods. The datasets used in this work can be found in the ETH3D website \parencite{website:ETH3D}, which is one of the latest datasets. In contrast to the popular TUM RGB-D Datasets \parencite{6385773}, the color images of ETH3D datasets were recorded via synchronized global shutter cameras, and the color and depth images were recorded at exactly the same points in time, such that no temporal smoothness assumption is needed to use both for estimating one camera pose \parencite{8954208}. ETH3D SLAM datasets have the training datasets and test datasets. Only the ground truth of training datasets is available on the website. Therefore, the training datasets will be adopted to conduct the experiments. There are 61 training datasets in total, which include different indoor scenes. Several exemplary scenes of ETH3D datasets are shown in figure \ref{Datasets_Examples}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Datasets_Examples.pdf}
+    \caption[Several exemplary scenes of ETH3D datasets]{Several exemplary scenes of ETH3D datasets.}\label{Datasets_Examples}
+\end{figure}
+
+\section{Test Environment}
+\label{sec:Test_Environment}
+A laptop with an Intel Core i5 4200H CPU and a Nvidia GTX 850M graphic card is used in this work. In addition, C++ will be adopted as the coding language. Several open-source C++ libraries are needed to establish a \ac{SLAM} system as listed in table \ref{Open_Source_Libraries}. OpenCV \parencite{website:OpenCV} is a highly optimized library with processing images, a main function is converting RGB images to matrices; g2o is an open-source C++ framework for optimizing graph-based nonlinear error functions \parencite{website:g2o}, it will be used for solving \ac{BA} optimization in this work; Eigen \parencite{website:Eigen} is a fast, reliable and versatile library for linear algebra: matrices and vectors, it is indispensable for Lie algebra.
+\begin{table}[htb]
+    \caption{The open-source C++ libraries used for implementation.}
+    \centering
+    \begin{tabular}{p{4cm}|p{9cm}}
+        \toprule
+        Boost\parencite{website:Boost} &Provides fundamental C++ libraries.\\
+        OpenCV\parencite{website:OpenCV} &Provides APIs for processing images.\\
+        CUDA\parencite{website:CUDA} &Provides APIs for General parallel computing to accelerate the computation.\\
+        Dlib\parencite{website:DLib} &Provides APIs for solving computer vision problems.\\
+        Eigen\parencite{website:Eigen} &Provides APIs for linear algebra: matrices, vectors, numerical solvers, and related algorithms.\\
+        g2o\parencite{website:g2o} &Provides APIs for optimizing graph-based nonlinear error functions.\\
+        gtest\parencite{website:GTest} &Provides a testing framework\\
+        OpenGV\parencite{website:OpenGV} &Provides APIs for solving
+        geometric vision problems.\\
+        Qt\parencite{website:Qt} &Provides APIs for Creating a visual interactive interface.\\
+        SUITESPARSE\parencite{website:SUITESPARSE} &Provides a suite of sparse matrix software.\\
+        Zlib\parencite{website:Zlib} &Provides a massively spiffy yet delicately unobtrusive compression library.\\
+        \bottomrule
+    \end{tabular}
+    \label{Open_Source_Libraries}
+\end{table}
+
+The whole project is implemented on an Ubuntu 18.04 operating system. 
+
+\section{Evaluation Criteria}
+For visual SLAM systems, the global consistency of the estimated trajectory is an important quantity. The global consistency can be evaluated by comparing the absolute distances between the estimated and the ground truth trajectory \parencite{6385773}. Therefore, the \ac{RMSE} of \ac{ATE} will be used as the final indicator to judge the accuracy of the SLAM system. For each dataset, the ground truth given by ETH3D will be compared to the results from experiments. The ATE of $kth$ position is given by equation \ref{A_T_E}, and the RMSE is given by equation \ref{RMSE_}.
+\begin{equation}
+    \mathbf{F}_{k}:=\mathbf{Q}_{k}^{-1} \mathbf{P}_{k}
+    \label{A_T_E}
+\end{equation}
+\begin{equation}
+    \operatorname{RMSE}\left(\mathbf{F}_{1: n}\right):=\left(\frac{1}{n} \sum_{k=1}^{n}\left\|\mathbf{F}_{k}\right\|^{2}\right)^{1 / 2}
+    \label{RMSE_}
+\end{equation}
+
+Where $\mathbf{Q}_{k}$ and $\mathbf{P}_{k}$ represent the transformation matrix of the estimated and ground truth poses and $n$ is the number of keyframes in the current dataset. They are transformed by $\boldsymbol{\xi_{k}}$ as shown in equation \ref{Xi_To_T}
+\begin{equation}
+    \mathbf{Q}_{k}=\exp \left(\boldsymbol{\xi_i}^{\wedge}\right)=\left[\begin{array}{cc}
+        \sum_{n=0}^{\infty} \frac{1}{n !}\left(\phi_k^{\wedge}\right)^{n} & \sum_{n=0}^{\infty} \frac{1}{(n+1) !}\left(\phi_k^{\wedge}\right)^{n} \rho_k \\
+        0^{\mathrm{T}} & 1
+        \end{array}\right]
+    \label{Xi_To_T}
+\end{equation}
+\begin{equation}
+    \mathbf{P}_{k}=\exp \left(\boldsymbol{\xi_{true}}^{\wedge}\right)=\left[\begin{array}{cc}
+        \sum_{n=0}^{\infty} \frac{1}{n !}\left(\phi_{true}^{\wedge}\right)^{n} & \sum_{n=0}^{\infty} \frac{1}{(n+1) !}\left(\phi_{true}^{\wedge}\right)^{n} \rho_{true} \\
+        0^{\mathrm{T}} & 1
+        \end{array}\right]
+    \label{Xi_To_T}
+\end{equation}
+
+To get the best results for this real-time SLAM system, all undefined parameters mentioned in chapter \ref{cha:impl} have been tested in a proper range, and corresponding ATE results will be compared with the results from BAD-SLAM \parencite{8954208}, all their original results can be found in the paper and website \parencite{website:SLAM_Benchmark}. We will use "Original" to represent the results from BAD-SLAM in the comparison.
+
+\section{The Bilateral Filter}
+In this section, the different standard deviation of the bilateral filter $\sigma_{1}$ and $\sigma_2$ have been tested and compared. There are 61 datasets in total, so there are 61 RMSE of the ATE for each dataset. Therefore, the mean value of 61 ATE RMSE will be treated as the result of one pair of the standard deviations. And the final result for $5<\sigma_1<20$ and $0.1<\sigma_2<1$ is shown in figure \ref{Different_Standard_Deviation_3D}. Therefore, the best result is given the standard deviation of $\sigma_{1}=14$ and $\sigma_2=0.4$.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Different_Standard_Deviation_3D.pdf}
+    \caption[the mean value of RMSE of 61 datasets of each pair of the standard deviations]{the mean value of RMSE of 61 datasets of each pair of the standard deviations. The dark the blue, the smaller the mean value of RMSE. The best result is given the standard deviation of $\sigma_{1}=14$ and $\sigma_2=0.4$ which is 5.897. In contrast to the original results 7.91, there is $25.4\%$ improvement.}\label{Different_Standard_Deviation_3D}
+\end{figure}
+
+Every ATE RMSE of the system with the best standard deviation and the original system for each dataset which is less than 8 cm is shown in figure \ref{Different_Standard_Deviation_RMSE_Plot}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Different_Standard_Deviation_RMSE_Plot.pdf}
+    \caption[The RMSE plot for the different standard deviation of Bilateral filter]{The ATE RMSE plot for the different standard deviation of Bilateral filter. For a given threshold on the ATE RMSE (x-axis), the graph shows the number of datasets for which the evaluated variant has a smaller ATE RMSE. The number of the datasets which the ATE RMSE is less than 2 is 39 in the system with the best standard deviation, in contrast to the Original which is 37, it is stronger than the original system.}\label{Different_Standard_Deviation_RMSE_Plot}
+\end{figure}
+
+\section{Keyframe Selection Method}
+In this section, the different constant number of interval frames $K_{max}$ will be tested first. Then the different Max Euclidean Distance $D_{Euc}$ will be tested. Finally, the different Max Mixed Distance $D_{Mix}$ will be tested.
+
+\subsection{Constant Number of Interval Frames}
+The different number of frame intervals range from 5 to 20 have been tested. In order to display the results clearly, only the best result of number 6, the original number 10 and the worst result of number 20 are shown in figure \ref{Constant_Number_RMSE_Plot}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Constant_Number_RMSE_Plot.pdf}
+    \caption[The ATE RMSE plot for different constant number frames interval]{The ATE RMSE plot for different constant number frames interval. For the datasets with ATE RMSE less than 8, the number of the original system with ten frames interval is 37, the number of the original system with 6 frames interval is 39.}\label{Constant_Number_RMSE_Plot}
+\end{figure}
+
+\subsection{Euclidean Distance}
+In order to find the best Max Euclidean Distance $D_{Euc}$, several experiments have been conducted with different Max Euclidean Distance $D_{Euc}$ ranges from 0.1 to 1, the mean value of 61 ATE RMSE will be treated as the result of each Max Euclidean Distance $D_{Euc}$. And the final results for the different Max Euclidean Distance $D_{Euc}$ are shown in figure \ref{Max_Euclidean_Distance_RMSE_Plot}. 
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Max_Euclidean_Distance_RMSE_Plot.pdf}
+    \caption[The average ATE RMSE of 61 datasets with different Max Euclidean Distance $D_{Euc}$]{The average ATE RMSE of 61 datasets with different Max Euclidean Distance $D_{Euc}$. The best result is 1.31 cm which is given by $D_{Euc}=0.4$.}\label{Max_Euclidean_Distance_RMSE_Plot}
+\end{figure}
+
+Every ATE RMSE of the system with the best Max Euclidean Distance $D_{Euc}$ and the original system for each dataset which is less than 8 cm is shown in figure \ref{Euclidean_RMSE_Plot}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Euclidean_RMSE_Plot.pdf}
+    \caption[The ATE RMSE plot for the keyframe selection method with Euclidean distance]{The ATE RMSE plot for the keyframe selection method with Euclidean distance. The overall result of the method with Euclidean distance is better than the original method. For the datasets with ATE RMSE less than 2, the number of the proposed method is 40, and the number of the original method is 37. Therefore, the performance of the proposed method is stronger than that of the original method}\label{Euclidean_RMSE_Plot}
+\end{figure}
+
+\subsection{Mixed Distance}
+As stated in section \ref{Subsection_Mixed_Distance},there are two different parts in the camera poses' vector $\boldsymbol{\xi}$, two coefficients $\mu_{t}$ and $\mu_{q}$ for translation and rotation satisfy the relationship shown in equation \ref{Mut_And_Muq}.
+\begin{equation}
+    \mu_{t} + \mu_{q} = 1
+    \label{Mut_And_Muq}
+\end{equation}
+
+Therefore, once the value of one of $\mu_{t}$ or $\mu_{q}$ is determined, another one is determined as well. The value of $\mu_{q}$ from 0.1 to 0.9 has been tested. The average ATE RMSE of 61 datasets of these experiments are shown in figure \ref{Mu_RMSE_Plot}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Mu_RMSE_Plot.pdf}
+    \caption[The average ATE RMSE of 61 datasets with different $\mu_q$]{The average ATE RMSE of 61 datasets with different $\mu_q$. The best result is 1.12 cm which is given by $\mu_q=0.7$.}\label{Mu_RMSE_Plot}
+\end{figure}
+
+The result of the proposed Mixed keyframe selection method with the best $\mu_q$ is shown in figure \ref{Mixed_RMSE_Plot}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Mixed_RMSE_Plot.pdf}
+    \caption[The ATE RMSE plot for the keyframe selection method with Mixed distance]{The ATE RMSE plot for the keyframe selection method with Mixed distance. The overall result of the method with Mixed distance is better than the original method. For the datasets with ATE RMSE less than 2, the number of proposed method is 40, and the number of original method is 37. Therefore, the performance of the proposed method is stronger than that of the original method}\label{Mixed_RMSE_Plot}
+\end{figure}
+
+The comparison of the mixed distance and the Euclidean distance is shown in figure \ref{Mixed_VS_Euclidean_8_RMSE_Plot}. In order to display the difference between two keyframe selection methods clearly, the numbers of datasets with the ATE RMSE less than 2 for both methods are shown in figure \ref{Mixed_VS_Euclidean_2_RMSE_Plot}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Mixed_VS_Euclidean_8_RMSE_Plot.pdf}
+    \caption[The ATE RMSE plot for the keyframe selection method with Mixed distance and Euclidean distance part1]{The ATE RMSE plot for the keyframe selection method with Mixed distance and Euclidean distance part1. The overall result of the method with Mixed distance is almost same as the method with Euclidean distance. For the datasets with the ATE RMSE less than 8, the numbers of both methods are 43.}\label{Mixed_VS_Euclidean_8_RMSE_Plot}
+\end{figure}
+
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Mixed_VS_Euclidean_2_RMSE_Plot.pdf}
+    \caption[The ATE RMSE plot for the keyframe selection method with Mixed distance and Euclidean distance part2]{The ATE RMSE plot for the keyframe selection method with Mixed distance and Euclidean distance part2. Within the ATE RMSE of 2 cm, the result of the method with Mixed distance is slightly better than the method with Euclidean distance.}\label{Mixed_VS_Euclidean_2_RMSE_Plot}
+\end{figure}
+
+\section{Robust Kernel Function}
+Several experiments are conducted with different $c$ in equation \ref{Tukey}, the results are shown in figure \ref{Different_Tukey_Plot}
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Different_Tukey_Plot.pdf}
+    \caption[The average ATE RMSE of 61 datasets with different $c$]{The average ATE RMSE of 61 datasets with different $c$. The best result is 3.72 cm which is given by $c=7$.}\label{Different_Tukey_Plot}
+\end{figure}
+
+The comparison of the system with the best $c$ and the original system is shown in figure \ref{Best_C_RMSE_Plot}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Best_C_RMSE_Plot.pdf}
+    \caption[The ATE RMSE plot for the system with the best $c$.]{The ATE RMSE plot for the system with the best $c$. The overall result of the method with the best $c$ is better than the method with Euclidean distance. For the datasets with the ATE RMSE less than 2, the numbers of the system with the best $c$ is 39, and the number of original method is 37. Therefore, the performance of the proposed method is stronger than that of the original method}\label{Best_C_RMSE_Plot}
+\end{figure}
+
+\section{Final Version Comparison}
+\label{sec:Final Version Comparison}
+In view of all the above experimental results, the best values of all parameters are determined via a series of experiments, the $sigma_1$ and $sigma_2$ in the bilateral filter, the $\mu_q$ in the keyframe selection method with mixed distance and the $c$ in Robust kernel function. In this section, the final system will adopt all the best parameters and the keyframe selection method with mixed distance, and several experiments for the final system have been conducted. The comparison of the final system with all the best parameters and the original system is shown in figure \ref{Mixed_VS_Original_RMSE_Plot_8}. In order to display the difference between two keyframe systems clearly, the numbers of datasets with the ATE RMSE less than 1.5 for both methods are shown in figure \ref{Mixed_VS_Original_RMSE_Plot_1.5}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Mixed_VS_Original_RMSE_Plot_8.pdf}
+    \caption[The ATE RMSE plot for the final system and the original system part1]{The ATE RMSE plot for the final system and the original system part1. The overall results of the final system are better than the original system. For the datasets with the ATE RMSE less than 8,  the number of the final system is 43, and the number of original method is 38.}\label{Mixed_VS_Original_RMSE_Plot_8}
+\end{figure}
+
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Mixed_VS_Original_RMSE_Plot_1.5.pdf}
+    \caption[The ATE RMSE plot for the final system and the original system part2]{The ATE RMSE plot for the final system and the original system part2. Within the datasets that the ATE RMSE is less than 1.5 cm, the number of datasets for each threshold for the final system is larger than that for the original system.}\label{Mixed_VS_Original_RMSE_Plot_1.5}
+\end{figure}
+
+To demonstrate the overall performance of the the system with different improvements, the corresponding distributions of the ATE RMSE that mentioned above are shown in table \ref{ATE_RMSE_Distribution}.
+\begin{table}[htb]
+    \caption{The distribution of the ATE RMSE for the system with best $\sigma$.}
+    \centering
+    \begin{tabular}{p{4cm}|p{2cm}|p{4.5cm}}
+        \toprule
+        Method& Mean(cm)& Standard Deviation(cm)\\
+        \bottomrule
+        Original& 7.91& 19.25 \\
+        \hline
+        With the best $\sigma$& 5.63& 12.44 \\
+        \bottomrule
+        20 frames interval&16.29&23.65\\
+        \hline
+        10 frames interval&7.91&19.25\\
+        \hline
+        6 frames interval&3.63&10.22\\
+        \bottomrule
+        Euclidean distance& 1.31& 2.65 \\
+        \hline
+        With the best $c$&3.72&11.72 \\
+        \hline
+        Mixed distance& 1.26& 2.65 \\
+        \hline
+        Final system&1.01& 2.55 \\
+        \bottomrule
+    \end{tabular}
+    \label{ATE_RMSE_Distribution}
+\end{table}
+
+In addition, In order to show the improvement of the final system more intuitively, the comparisons of the estimated trajectory and the ground truth of dataset $cables-3$ from different systems are shown in figure \ref{Trajectory_Compare_Original}, \ref{Trajectory_Compare_Euclidean} and \ref{Trajectory_Compare_Mixed}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Trajectory_Compare_Original.png}
+    \caption[The comparisons of the estimated trajectory and the ground truth of dataset $cables-3$ from the original system]{The comparisons of the estimated trajectory and the ground truth of dataset $cables-3$ from the original system. The red line represents the difference between the estimated trajectory and the ground truth. Therefore, the shorter the red line, the more precise the estimated trajectory}\label{Trajectory_Compare_Original}
+\end{figure}
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Trajectory_Compare_Euclidean.png}
+    \caption[The comparisons of the estimated trajectory and the ground truth of dataset $cables-3$ from the system with Euclidean distance]{The comparisons of the estimated trajectory and the ground truth of dataset $cables-3$ from the system with Euclidean distance.}\label{Trajectory_Compare_Euclidean}
+\end{figure}
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Trajectory_Compare_Mixed.png}
+    \caption[The comparisons of the estimated trajectory and the ground truth of dataset $cables-3$ from the system with Mixed distance]{The comparisons of the estimated trajectory and the ground truth of dataset $cables-3$ from the system with Mixed distance.}\label{Trajectory_Compare_Mixed}
+\end{figure}
+
+\section{Resource Consumption}
+For the real-time SLAM system, the resource consumption of the system is critical as well. In order to evaluate the resource consumption of the proposed system, the time consumption and \ac{VRAM} consumption of each system with different keyframe selection methods will be shown in this section.
+\subsection{Time Consumption}
+The average time consumption of 61 datasets from each system with different keyframe selection methods are shown in figure \ref{Resource_Consumption_Time}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Resource_Consumption_Time.pdf}
+    \caption[The average time consumption of each system]{The average time consumption of each system. The average time consumption of the system with Mixed distance and Euclidean distance and the final system is 23\% larger than the original system, it results from the computation of those distances. In contrast to the keyframe selection method of 6 frames interval, all other methods are faster, and the accuracy of the system with Mixed distance and Euclidean distance and the final system is far better than 6 frames interval method. It is also worth noting that the performance of the system with 6 frames interval is weaker than that of the final system, but the time consumption is 92\% more}\label{Resource_Consumption_Time}
+\end{figure}
+
+\subsection{Calculation Consumption}
+The average \ac{VRAM} consumption of 61 datasets from each system with different keyframe selection methods are shown in figure \ref{Resource_Consumption_Time}.
+\begin{figure}[thb]
+    \centering
+    \includegraphics[width=1\textwidth]{images/Resource_Consumption_VRAM.pdf}
+    \caption[The average VRAM consumption of each system]{The average VRAM consumption of each system. The average VRAM and time consumption present the similar results.The average VRAM consumption of the system with Mixed distance and Euclidean distance and the final system is 19\% larger than the original system, but smaller than the 6 frames interval method. It is also worth noting that the performance of the system with 6 frames interval is weaker than that of the final system, but the VRAM consumption is 54.6\% more}\label{Resource_Consumption_VRAM}
+\end{figure}

@@ -1,0 +1,69 @@
+\newpage
+\subsection{Cross-Validation with Unknown Data}
+Because of it's auto-associative nature, the spiking \ac{SDM} runs the risk of simply putting data from the input through to the output.
+If this is the case and the output equals exactly the input,
+the confusion matrices, like those shown above, will give similar results, because the naive Gaussian classifier will of course also classify input data correctly.
+
+To validate, that the memory is robust against unknown samples,
+experiments are made, where during the training process, every sample out of a selected label is skipped.
+In the testing process, sample data of \textit{all} patterns will be given to the input, to check,
+how the memory reacts to unknown input data.
+
+Table \ref{tab:xvalid_unknown} shows the 4 experiments.
+
+\begin{table}[h]\centering
+    \caption{Tested noise levels with example data}
+    \label{tab:xvalid_unknown}
+    \begin{tabular}{l|l|l}
+        \textbf{training samples} & \textbf{testing samples} & \textbf{results}\\
+        \hline
+        pattern 1, 2, 3 & pattern 0, 1, 2, 3 & figure \ref{fig:skip_pat0}\\
+        pattern 0, 2, 3 & pattern 0, 1, 2, 3 & figure \ref{fig:skip_pat1}\\
+        pattern 0, 1, 2 & pattern 0, 1, 2, 3 & figure \ref{fig:skip_pat2}\\
+        pattern 0, 1, 3 & pattern 0, 1, 2, 3 & figure \ref{fig:skip_pat3}
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\paperwidth]{images/results/cnf/cnfmx_bayes_var1000_N1600_T24_p0.7_wr3_sam600_skipped0.png}
+    \caption{Samples of pattern 0 skipped in training}
+    \label{fig:skip_pat0}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\paperwidth]{images/results/cnf/cnfmx_bayes_var1000_N1600_T24_p0.7_wr3_sam600_skipped1.png}
+    \caption{Samples of pattern 1 skipped in training}
+    \label{fig:skip_pat1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\paperwidth]{images/results/cnf/cnfmx_bayes_var1000_N1600_T24_p0.7_wr3_sam600_skipped2.png}
+    \caption{Samples of pattern 2 skipped in training}
+    \label{fig:skip_pat2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\paperwidth]{images/results/cnf/cnfmx_bayes_var1000_N1600_T24_p0.7_wr3_sam600_skipped3.png}
+    \caption{Samples of pattern 3 skipped in training}
+    \label{fig:skip_pat3}
+\end{figure}
+
+This confusion matrices clearly show, that the model does not recognise data, that has not been trained before in the most time.
+While pattern0, pattern2 and pattern3 are correctly \textit{not} recognised when they have been skipped during training,
+pattern1 is recognised in 316 out of 1800 times although not trained,
+which is like a sort of machine déjà-vu.
+
+A set of five out of the 316 false-positives is shown in figure \ref{fig:false_positives} with the training sample on the left and the retrieved data on the right.
+The training samples share features of pattern0 and pattern3, which might lead the naive Bayes classifier to the conclusion that pattern1 was retrieved.
+But with common sense, one can say that here this is no case of underfitting and the model reacts well to the input of unknown data.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\paperwidth]{images/results/test_retr/false_positives_pattern1_skipped1_var1000.pdf}
+    \caption{Testing samples (left) of untrained pattern1 and corresponding retrieved samples (right), that are detected as pattern1 by the classifier}
+    \label{fig:false_positives}
+\end{figure}
