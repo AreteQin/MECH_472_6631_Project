@@ -262,6 +262,23 @@ bool check_space(std::vector<object> objects, int i, int j) {
 	return true;
 }
 
+bool check_space_laser(std::vector<object> objects, int i, int j) {
+	double obstacle_radius = 50;
+	if (i < 20 || i>620 || j < 20 || j>460) {
+		return false;
+	}
+	for (int k = 0; k < objects.size(); k++) {
+		if (objects[k].get_id() == 5) {
+			double distance = sqrt((i - objects[k].get_position_x()) * (i - objects[k].get_position_x()) +
+				(j - objects[k].get_position_y()) * (j - objects[k].get_position_y()));
+			if (distance < obstacle_radius) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
 // find out objects represent self and enemy robots from all objects
 bool get_robots(std::vector<object> objects, object& self, object& self_rear,
 				object& enemy, object& enemy_rear) {
@@ -514,14 +531,12 @@ void laser_track(double x, double y, double theta, double enemy_x, double enemy_
 
 		if (pw_laser <= 1500) {
 
-			//alpha = ((double)pw_laser - 1000) / 1000 * pi;
 			e_ang = pi / 2 - alpha + (gamma - theta);
 			pw_laser += (int)(e_ang / pi * 1000);
 
 		}
 		else if (pw_laser > 1500) {
 
-			//alpha = (2000 - (double)pw_laser) / 1000 * pi;
 			e_ang = alpha - pi / 2 - (gamma - theta);
 			pw_laser += (int)(e_ang / pi * 1000);
 
@@ -534,14 +549,12 @@ void laser_track(double x, double y, double theta, double enemy_x, double enemy_
 
 		if (pw_laser <= 1500) {
 
-			//alpha = ((double)pw_laser - 1000) / 1000 * pi;
 			e_ang = pi / 2 - alpha + (gamma - theta);
 			pw_laser += (int)(e_ang / pi * 1000);
 
 		}
 		else if (pw_laser > 1500) {
 
-			//alpha = (2000 - (double)pw_laser) / 1000 * pi;
 			e_ang = alpha - pi / 2 - (gamma - theta);
 			pw_laser += (int)(e_ang / pi * 1000);
 
@@ -578,7 +591,7 @@ int free_path(image rgb, std::vector<object> objects, double laser_x, double las
 
 		//draw_point_rgb(rgb, x_path, y_path, 255, 0, 0);
 
-		if (check_space(objects, x_path, y_path) == 0) {
+		if (check_space_laser(objects, x_path, y_path) == 0) {
 			//path crosses an obstacle
 			path_free = 0;
 
@@ -666,7 +679,7 @@ int main()
 	 
 	x0 = 150;
 	y0 = 180;
-	theta0 = -1.5;
+	theta0 = 1;
 	set_robot_position(x0, y0, theta0);
 
 	// set initial inputs / on-line adjustable parameters /////////
@@ -769,8 +782,8 @@ int main()
 			theta_1 = self_position_theta;
 		}
 
-		draw_point_rgb(rgb, self_position_x, self_position_y, 0, 0, 255);
-		draw_point_rgb(rgb, self_rear.get_position_x(), self_rear.get_position_y(), 0, 0, 255);
+		//draw_point_rgb(rgb, self_position_x, self_position_y, 0, 0, 255);
+		//draw_point_rgb(rgb, self_rear.get_position_x(), self_rear.get_position_y(), 0, 0, 255);
 
 		laser_x = self_position_x + 31 * cos(self_position_theta);
 		laser_y = self_position_y + 31 * sin(self_position_theta);
@@ -840,7 +853,6 @@ int main()
 		else {
 			pw_r = 1000;
 			pw_l = 2000;
-			std::cout << "Using 100 100";
 		}
 		
 		//Laser servo tracking enemy function
@@ -861,10 +873,11 @@ int main()
 		//std::cout << "self_rear x is: " << x_rear << "\n";
 		//std::cout << "self_rear y is: " << y_rear << "\n";
 		//std::cout << "enemy centroids is: " << enemy_centroids << "\n";
-		std::cout << "laser error is: " << l_ang  << "\n";
-		std::cout << "Alpha is: " << laser_alpha * 180 / pi << "\n";
-		std::cout << "pw_laser is: " << pw_laser << "\n";
-		std::cout << "laser is: " << laser << "\n";
+		//std::cout << "laser error is: " << l_ang  << "\n";
+		//std::cout << "Alpha is: " << laser_alpha * 180 / pi << "\n";
+		//std::cout << "pw_laser is: " << pw_laser << "\n";
+		//std::cout << "laser is: " << laser << "\n";
+		//std::cout << "laser before: " << laser_pre_error << "\n";
 		
 		double phi;
 
@@ -874,13 +887,14 @@ int main()
 
 			std::cout << "PATH IS FREE!" << "\n";
 
-			if (abs(l_ang) < 0.01 && abs(laser_pre_error) < 0.1 && self_centroids < 90 && enemy_centroids < 90 && abs(phi - self_position_theta) < 0.01 && x_rear != 0) {
+			if (abs(l_ang) < 0.05 && abs(laser_pre_error) < 0.05 && self_centroids < 90 && enemy_centroids < 90 && abs(phi - self_position_theta) < 0.001 && x_rear != 0) {
 				
 				laser = 1;
 				std::cout << "LASER ERROR IS SMALL" << "\n";
 				std::cout << "laser error is: " << l_ang << "\n";
 
 			}
+
 
 		}
 		else

@@ -121,7 +121,7 @@ int avoid_edges(double x, double y, double x_rear, double y_rear) {
 		}
 	}
 	
-	std::cout << "d is :" << k << "\n";
+	//std::cout << "d is :" << k << "\n";
 	return k;
 } 
 

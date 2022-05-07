@@ -464,7 +464,7 @@ int acquire_image_sim(image &rgb)
 	if(	S1->P[1]->laser && !laser_previous ) {
 		t_laser_start = S1->t; // record laser start time
 		laser_fired = 1;
-		cout << "\nlaser fired !";
+		cout << "\nLASER FIRED ! \n";
 	}
 	
 	// update previous laser state

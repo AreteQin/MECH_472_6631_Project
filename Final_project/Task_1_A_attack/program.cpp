@@ -262,6 +262,23 @@ bool check_space(std::vector<object> objects, int i, int j) {
 	return true;
 }
 
+bool check_space_laser(std::vector<object> objects, int i, int j) {
+	double obstacle_radius = 50;
+	if (i < 20 || i>620 || j < 20 || j>460) {
+		return false;
+	}
+	for (int k = 0; k < objects.size(); k++) {
+		if (objects[k].get_id() == 5) {
+			double distance = sqrt((i - objects[k].get_position_x()) * (i - objects[k].get_position_x()) +
+				(j - objects[k].get_position_y()) * (j - objects[k].get_position_y()));
+			if (distance < obstacle_radius) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
 // find out objects represent self and enemy robots from all objects
 bool get_robots(std::vector<object> objects, object& self, object& self_rear,
 				object& enemy, object& enemy_rear) {
@@ -514,14 +531,12 @@ void laser_track(double x, double y, double theta, double enemy_x, double enemy_
 
 		if (pw_laser <= 1500) {
 
-			//alpha = ((double)pw_laser - 1000) / 1000 * pi;
 			e_ang = pi / 2 - alpha + (gamma - theta);
 			pw_laser += (int)(e_ang / pi * 1000);
 
 		}
 		else if (pw_laser > 1500) {
 
-			//alpha = (2000 - (double)pw_laser) / 1000 * pi;
 			e_ang = alpha - pi / 2 - (gamma - theta);
 			pw_laser += (int)(e_ang / pi * 1000);
 
@@ -534,14 +549,12 @@ void laser_track(double x, double y, double theta, double enemy_x, double enemy_
 
 		if (pw_laser <= 1500) {
 
-			//alpha = ((double)pw_laser - 1000) / 1000 * pi;
 			e_ang = pi / 2 - alpha + (gamma - theta);
 			pw_laser += (int)(e_ang / pi * 1000);
 
 		}
 		else if (pw_laser > 1500) {
 
-			//alpha = (2000 - (double)pw_laser) / 1000 * pi;
 			e_ang = alpha - pi / 2 - (gamma - theta);
 			pw_laser += (int)(e_ang / pi * 1000);
 
@@ -578,7 +591,7 @@ int free_path(image rgb, std::vector<object> objects, double laser_x, double las
 
 		//draw_point_rgb(rgb, x_path, y_path, 255, 0, 0);
 
-		if (check_space(objects, x_path, y_path) == 0) {
+		if (check_space_laser(objects, x_path, y_path) == 0) {
 			//path crosses an obstacle
 			path_free = 0;
 
@@ -826,10 +839,21 @@ int main()
 			inversekinematics(v_cmd, w_cmd, vr, vl, D, pw_r, pw_l);
 		}
 
+		else if (avoid_edges(self_position_x, self_position_y, x_rear, y_rear) > 4 && self_position_x != 0 && x_rear != 0)
+		{
+			pw_r = 2000;
+			pw_l = 1000;
+		}
+
+		else if (avoid_edges(self_position_x, self_position_y, x_rear, y_rear) < 4 && avoid_edges(self_position_x, self_position_y, x_rear, y_rear) > 0 && self_position_x != 0 && x_rear != 0)
+		{
+			pw_r = 1000;
+			pw_l = 2000;
+		}
+
 		else {
 			pw_r = 1000;
 			pw_l = 2000;
-			std::cout << "Using 100 100";
 		}
 		
 		//Laser servo tracking enemy function
@@ -863,14 +887,11 @@ int main()
 
 			std::cout << "PATH IS FREE!" << "\n";
 
-			if (abs(l_ang) < 0.1 && abs(laser_pre_error) < 0.1 && self_centroids < 90 && enemy_centroids < 90 && abs(phi - self_position_theta) < 0.01 && x_rear != 0) {
+			if (abs(l_ang) < 0.05 && abs(laser_pre_error) < 0.05 && self_centroids < 90 && enemy_centroids < 90 && abs(phi - self_position_theta) < 0.001 && x_rear != 0) {
 				
 				laser = 1;
 				std::cout << "LASER ERROR IS SMALL" << "\n";
 				std::cout << "laser error is: " << l_ang << "\n";
-				set_inputs(pw_l, pw_r, pw_laser, laser,
-					light, light_gradient, light_dir, image_noise,
-					max_speed, opponent_max_speed);
 
 			}
 
